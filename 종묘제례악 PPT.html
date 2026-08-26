@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>종묘제례악 완전 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9A84C;--gold2:#E8C96A;--crimson:#8B0000;--crimson2:#B22222;
+  --dark:#0D0A06;--cream:#FFF8E7;--muted:#B8A88A;
+  --card:#1e1608;--border:rgba(201,168,76,.25);
+  --deungga:#1e3a5f;--heunga:#5f1e1e;--both:#1a5f2a;
+  --correct:#2d7a3d;--wrong:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--dark);color:var(--cream);user-select:none;}
+
+/* ── 슬라이더 ── */
+#slider-wrap{position:fixed;inset:0;overflow:hidden;}
+#slider{display:flex;height:100vh;
+  transition:transform .6s cubic-bezier(.77,0,.175,1);}
+.slide{flex-shrink:0;width:100vw;height:100vh;
+  position:relative;overflow:hidden;}
+
+/* ── 화살표 ── */
+.nav-arrow{position:fixed;top:50%;transform:translateY(-50%);
+  z-index:99999;width:52px;height:52px;border-radius:50%;
+  background:rgba(13,10,6,.85);border:2px solid var(--gold);
+  color:var(--gold);font-size:1.5rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;backdrop-filter:blur(6px);}
+.nav-arrow:hover{background:var(--gold);color:var(--dark);}
+.nav-arrow.disabled{opacity:.15;pointer-events:none;}
+#arrow-left{left:14px;}
+#arrow-right{right:14px;}
+
+/* ── 슬라이드 카운터 ── */
+#slide-counter{position:fixed;bottom:16px;left:50%;
+  transform:translateX(-50%);z-index:99999;
+  display:flex;gap:6px;align-items:center;}
+.dot{width:9px;height:9px;border-radius:50%;
+  background:rgba(201,168,76,.25);border:1.5px solid var(--gold);
+  cursor:pointer;transition:all .25s;}
+.dot.on{background:var(--gold);transform:scale(1.35);}
+
+/* ══ 슬라이드 1: 표지 ══ */
+#s1{background:linear-gradient(160deg,#0D0A06 0%,#1a1208 50%,#2d1f0a 100%);}
+.cover-wrap{position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;}
+.cover-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,
+  rgba(201,168,76,.1) 0%,transparent 70%);}
+.cover-content{position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;gap:20px;padding:40px;text-align:center;}
+.cover-img{width:min(520px,62vw);height:min(320px,40vh);
+  object-fit:cover;border-radius:12px;
+  border:3px solid var(--gold);
+  box-shadow:0 12px 50px rgba(0,0,0,.7);}
+.cover-title{font-family:'Noto Serif KR',serif;
+  font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;
+  color:var(--gold);letter-spacing:.15em;
+  text-shadow:0 2px 20px rgba(201,168,76,.5);}
+.cover-sub{font-size:clamp(1rem,1.8vw,1.3rem);
+  color:#c8b890;letter-spacing:.1em;}
+.cover-badge{padding:7px 26px;border:2px solid var(--gold);
+  border-radius:30px;font-size:.9rem;color:var(--gold);
+  background:rgba(201,168,76,.1);letter-spacing:.08em;}
+.cover-hint{font-size:.8rem;color:#6a5a3a;margin-top:6px;}
+
+/* ══ 공통 슬라이드 헤더 ══ */
+.slide-header{flex-shrink:0;
+  background:linear-gradient(90deg,#1a1208,#2d1f0a);
+  border-bottom:3px solid var(--gold);
+  padding:16px 32px;display:flex;align-items:center;gap:14px;
+  z-index:10;}
+.slide-header h2{font-family:'Noto Serif KR',serif;
+  font-size:clamp(1.3rem,2.5vw,1.8rem);
+  font-weight:900;color:var(--gold);}
+.slide-header .snum{margin-left:auto;
+  font-size:.8rem;color:var(--muted);}
+
+/* ══ 슬라이드 2: 목차 ══ */
+#s2{background:linear-gradient(135deg,#0D0A06,#1a1208);}
+.toc-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
+.toc-body{flex:1;display:grid;grid-template-columns:1fr 1fr;
+  gap:16px;padding:28px 40px;overflow:hidden;}
+.toc-item{display:flex;align-items:center;gap:16px;
+  background:rgba(201,168,76,.06);
+  border:1.5px solid rgba(201,168,76,.2);
+  border-radius:12px;padding:16px 22px;
+  cursor:pointer;transition:all .25s;}
+.toc-item:hover{background:rgba(201,168,76,.14);
+  border-color:var(--gold);transform:translateX(6px);}
+.toc-num{font-family:'Noto Serif KR',serif;
+  font-size:1.6rem;font-weight:900;
+  color:var(--gold);opacity:.6;min-width:36px;}
+.toc-text{font-size:1.05rem;font-weight:500;color:var(--cream);}
+.toc-sub{font-size:.78rem;color:var(--muted);margin-top:3px;}
+
+/* ══ 정보 슬라이드 공통 ══ */
+.info-slide{background:linear-gradient(135deg,#0D0A06,#1a1208);}
+.info-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
+.info-body{flex:1;display:grid;overflow:hidden;}
+.info-body.two-col{grid-template-columns:1fr 1fr;}
+.info-body.one-col{grid-template-columns:1fr;}
+.info-body.img-wide{grid-template-columns:58% 42%;}
+.info-img-area{display:flex;align-items:center;
+  justify-content:center;padding:28px;
+  background:rgba(0,0,0,.2);overflow:hidden;}
+.info-img{max-width:100%;max-height:100%;
+  object-fit:contain;border-radius:12px;
+  border:2px solid rgba(201,168,76,.35);
+  box-shadow:0 10px 40px rgba(0,0,0,.6);}
+.info-text-area{padding:32px 36px;
+  display:flex;flex-direction:column;
+  justify-content:center;gap:18px;overflow-y:auto;}
+.info-label{display:inline-block;padding:4px 16px;
+  border-radius:16px;font-size:.78rem;font-weight:700;
+  background:rgba(201,168,76,.15);
+  border:1.5px solid var(--gold);
+  color:var(--gold);align-self:flex-start;}
+.info-title{font-family:'Noto Serif KR',serif;
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:900;color:var(--gold);}
+.info-hanja{font-size:1rem;color:var(--muted);margin-top:-12px;}
+.info-desc{font-size:clamp(.95rem,1.4vw,1.1rem);
+  line-height:2.1;color:#e8e0d0;}
+.info-desc strong{color:var(--gold2);font-weight:700;}
+.info-desc em{color:#a8d8f0;font-style:normal;font-weight:600;}
+.info-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{padding:4px 14px;border-radius:14px;font-size:.78rem;
+  background:rgba(201,168,76,.1);
+  border:1px solid rgba(201,168,76,.3);color:#c8b890;}
+
+/* 타임라인 */
+.timeline{display:flex;flex-direction:column;gap:14px;}
+.tl-item{display:flex;gap:16px;align-items:flex-start;}
+.tl-year{flex-shrink:0;width:76px;text-align:right;
+  font-family:'Noto Serif KR',serif;
+  font-size:.92rem;font-weight:700;
+  color:var(--gold);padding-top:2px;}
+.tl-dot{flex-shrink:0;width:12px;height:12px;
+  border-radius:50%;background:var(--gold);
+  margin-top:4px;position:relative;}
+.tl-dot::after{content:'';position:absolute;
+  left:50%;top:100%;transform:translateX(-50%);
+  width:2px;height:calc(100% + 10px);
+  background:rgba(201,168,76,.3);}
+.tl-item:last-child .tl-dot::after{display:none;}
+.tl-text{font-size:.92rem;line-height:1.8;color:#e8e0d0;}
+.tl-text strong{color:var(--gold2);}
+
+/* 보태평/정대업 카드 */
+.music-cards{display:grid;grid-template-columns:1fr 1fr;
+  gap:20px;height:100%;}
+.music-card{background:rgba(201,168,76,.06);
+  border:1.5px solid rgba(201,168,76,.25);
+  border-radius:14px;padding:24px;
+  display:flex;flex-direction:column;gap:12px;}
+.music-card h3{font-family:'Noto Serif KR',serif;
+  font-size:1.3rem;font-weight:900;color:var(--gold);}
+.music-card .hanja{font-size:.85rem;color:var(--muted);}
+.music-card p{font-size:.9rem;line-height:1.9;color:#e8e0d0;}
+.music-card p strong{color:var(--gold2);}
+.music-card .tracks{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+.track-tag{padding:3px 10px;border-radius:10px;font-size:.68rem;
+  background:rgba(201,168,76,.12);
+  border:1px solid rgba(201,168,76,.25);color:#c8b890;}
+
+/* 등가/헌가 이미지 오버레이 */
+.jongmyo-img-wrap{position:relative;width:100%;height:100%;overflow:hidden;}
+.jongmyo-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.zone-overlay{position:absolute;padding:7px 16px;
+  border-radius:20px;font-size:.82rem;font-weight:700;
+  backdrop-filter:blur(4px);}
+.zone-deungga{top:20%;left:36%;
+  background:rgba(30,58,95,.92);color:#a8c8f0;
+  border:2px solid #5a8abf;}
+.zone-heunga{bottom:26%;left:18%;
+  background:rgba(95,30,30,.92);color:#f0a8a8;
+  border:2px solid #bf5a5a;}
+.zone-ilmu{bottom:36%;left:33%;
+  background:rgba(26,95,42,.92);color:#a8f0c0;
+  border:2px solid #5abf80;}
+
+/* 제례절차 */
+.procedure-grid{display:grid;
+  grid-template-columns:repeat(3,1fr);gap:14px;
+  padding:24px 32px;}
+.proc-card{background:rgba(201,168,76,.06);
+  border:1.5px solid rgba(201,168,76,.2);
+  border-radius:12px;padding:18px;
+  display:flex;flex-direction:column;gap:8px;transition:all .25s;}
+.proc-card:hover{background:rgba(201,168,76,.12);border-color:var(--gold);}
+.proc-num{font-family:'Noto Serif KR',serif;
+  font-size:1.4rem;font-weight:900;color:var(--gold);opacity:.7;}
+.proc-title{font-size:1rem;font-weight:700;color:var(--gold2);}
+.proc-desc{font-size:.85rem;line-height:1.8;color:#e0d8c8;}
+
+/* ══ 갤러리 슬라이드 ══ */
+#s8{background:linear-gradient(135deg,#0D0A06,#1a1208);}
+.gallery-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
+.gallery-body{flex:1;overflow-y:auto;padding:16px 28px 40px;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:12px;align-content:start;}
+.gallery-card{background:rgba(201,168,76,.07);
+  border:1.5px solid rgba(201,168,76,.2);
+  border-radius:12px;padding:14px;
+  display:flex;flex-direction:column;
+  align-items:center;gap:8px;
+  cursor:pointer;transition:all .25s;}
+.gallery-card:hover{background:rgba(201,168,76,.16);
+  border-color:var(--gold);transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(201,168,76,.2);}
+.gallery-card img{width:100%;height:90px;
+  object-fit:contain;border-radius:8px;
+  border:1px solid rgba(201,168,76,.25);}
+.gallery-card .gc-name{font-family:'Noto Serif KR',serif;
+  font-size:.95rem;font-weight:700;color:var(--gold);}
+.gallery-card .gc-badge{padding:2px 10px;border-radius:10px;
+  font-size:.62rem;font-weight:600;}
+.badge-dg{background:rgba(30,58,95,.8);color:#a8c8f0;}
+.badge-hg{background:rgba(95,30,30,.8);color:#f0a8a8;}
+.badge-both{background:rgba(26,95,42,.8);color:#a8f0c0;}
+.gallery-card .gc-hint{font-size:.65rem;color:#6a5a3a;}
+
+/* ══ 팝업 모달 ══ */
+#modal-overlay{position:fixed;inset:0;
+  background:rgba(0,0,0,.75);z-index:2000;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;}
+#modal-overlay.show{opacity:1;pointer-events:all;}
+#modal-box{background:linear-gradient(135deg,#1a1208,#2d1f0a);
+  border:2px solid var(--gold);border-radius:16px;
+  width:min(700px,90vw);max-height:85vh;
+  display:flex;flex-direction:column;
+  transform:scale(.85) translateY(30px);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
+#modal-overlay.show #modal-box{transform:scale(1) translateY(0);}
+#modal-header{background:linear-gradient(90deg,#1a1208,#2d1f0a);
+  border-bottom:2px solid var(--gold);
+  padding:14px 22px;display:flex;
+  align-items:center;gap:14px;flex-shrink:0;}
+#modal-header h3{font-family:'Noto Serif KR',serif;
+  font-size:1.4rem;font-weight:900;color:var(--gold);}
+#modal-close{margin-left:auto;width:32px;height:32px;
+  border-radius:50%;border:1.5px solid var(--gold);
+  background:transparent;color:var(--gold);
+  font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;}
+#modal-close:hover{background:var(--gold);color:var(--dark);}
+#modal-body{flex:1;overflow-y:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;}
+#modal-img-area{display:flex;align-items:center;
+  justify-content:center;padding:28px;background:rgba(0,0,0,.2);}
+#modal-img{width:100%;max-height:280px;
+  object-fit:contain;border-radius:10px;
+  border:2px solid rgba(201,168,76,.4);}
+#modal-text-area{padding:24px;
+  display:flex;flex-direction:column;gap:14px;}
+#modal-zone-badge{padding:4px 14px;border-radius:16px;
+  font-size:.76rem;font-weight:700;align-self:flex-start;}
+#modal-name{font-family:'Noto Serif KR',serif;
+  font-size:1.8rem;font-weight:900;color:var(--gold);}
+#modal-hanja{font-size:.9rem;color:var(--muted);}
+#modal-desc{font-size:.95rem;line-height:2;color:#e8e0d0;}
+#modal-desc strong{color:var(--gold2);font-weight:700;}
+#modal-tags{display:flex;flex-wrap:wrap;gap:6px;}
+#modal-yt-btn{display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:24px;
+  background:rgba(180,0,0,.9);border:none;
+  color:#fff;font-family:'Noto Sans KR',sans-serif;
+  font-size:.85rem;font-weight:500;cursor:pointer;
+  transition:all .2s;text-decoration:none;align-self:flex-start;}
+#modal-yt-btn:hover{background:#e00;transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(180,0,0,.4);}
+
+/* ══ s9 새 배치활동 추가 CSS ══ */
+#board-title{
+  font-family:'Noto Serif KR',serif;
+  font-size:.95rem;font-weight:900;
+  color:var(--gold);
+  background:linear-gradient(135deg,#1a1208,#2d1f0a);
+  border:2px solid var(--gold);
+  border-radius:8px;padding:4px 22px;
+  letter-spacing:.1em;text-align:center;flex-shrink:0;
+  box-shadow:0 2px 10px rgba(0,0,0,.4);
+}
+#board-wrap{
+  flex:1;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 12px;overflow:hidden;
+}
+#board-container{
+  display:flex;flex-direction:column;
+  align-items:center;gap:4px;
+  height:100%;width:100%;max-width:820px;
+}
+#board{
+  position:relative;width:100%;flex:1;min-height:0;
+  border:2px solid #8a7a5a;border-radius:6px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  overflow:hidden;background:#e8dfc8;
+  display:flex;flex-direction:column;
+  justify-content:space-around;padding:6px 8px;
+}
+#board-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:fill;pointer-events:none;z-index:0;opacity:.3;
+}
+.zone-section{
+  position:relative;z-index:3;
+  display:flex;flex-direction:column;
+  align-items:center;gap:3px;flex:1;justify-content:center;
+}
+.zone-divider{
+  width:90%;height:2px;flex-shrink:0;
+  background:linear-gradient(90deg,transparent,rgba(200,169,110,.5),transparent);
+}
+.dz-row{
+  display:flex;gap:4px;
+  justify-content:center;align-items:center;
+  flex-wrap:nowrap;flex-shrink:0;
+}
+.side-hint{font-size:.58rem;color:#b8a882;text-align:center;flex-shrink:0;line-height:1.4;}
+#legend{display:flex;gap:4px;justify-content:center;flex-shrink:0;flex-wrap:wrap;padding:1px 0;}
+.leg-item{display:flex;align-items:center;gap:3px;font-size:.57rem;color:#b8a882;}
+.leg-dot{width:7px;height:7px;border-radius:50%;}
+#pieces-wrap{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:4px;overflow-y:auto;flex:1;padding:2px;
+}
+.piece{
+  aspect-ratio:1;border-radius:8px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  cursor:grab;border:2px solid;
+  transition:transform .15s,box-shadow .15s,opacity .2s;
+  overflow:hidden;position:relative;touch-action:none;
+}
+.piece:hover:not(.used){transform:scale(1.1);box-shadow:0 4px 16px rgba(0,0,0,.6);}
+.piece.selected{outline:3px solid var(--gold);outline-offset:2px;transform:scale(1.06);}
+.piece.dragging{opacity:.25;transform:scale(.88);}
+.piece.used{opacity:.2;pointer-events:none;filter:grayscale(1);}
+.piece img{width:75%;height:67%;object-fit:contain;pointer-events:none;flex-shrink:0;}
+.piece .pname{font-size:.55rem;font-weight:700;text-align:center;line-height:1;margin-top:2px;pointer-events:none;}
+.piece.deungga{border-color:#5a8abf;background:linear-gradient(135deg,#e8f0fa,#d0e4f5);}
+.piece.deungga .pname{color:#1e3a5f;}
+.piece.heunga{border-color:#bf5a5a;background:linear-gradient(135deg,#fae8e8,#f5d0d0);}
+.piece.heunga .pname{color:#5f1e1e;}
+.piece.both{border-color:#5abf80;background:linear-gradient(135deg,#e8faf0,#d0f5e4);}
+.piece.both .pname{color:#1e5f3a;}
+.piece.hidden-filter{display:none !important;}
+.dz-placed-img{width:88%;height:82%;object-fit:contain;pointer-events:none;}
+/* ══ 슬라이드 9: 배치도 절대좌표 레이아웃 ══ */
+#layout-wrap {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+#layout-img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+#layout-wrap .drop-zone {
+  position: absolute;
+  width: 6%;
+  height: 7%;
+  transform: translate(-50%, -50%);
+}
+
+/* ══ 슬라이드 9 레이아웃 ══ */
+#s9{
+  display:flex;flex-direction:column;
+  overflow:hidden;background:#1a1208;
+}
+#act-header{
+  flex-shrink:0;
+  background:linear-gradient(135deg,#1a1208,#2d1f0a);
+  border-bottom:3px solid var(--gold);
+  padding:8px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:200;
+}
+.hdr-right{display:flex;gap:8px;align-items:center;}
+#score-box{
+  background:rgba(200,169,110,.15);border:1.5px solid var(--gold);
+  border-radius:20px;padding:3px 14px;
+  font-size:.82rem;font-weight:700;color:var(--gold);
+}
+.ctrl-btn{
+  padding:5px 14px;border-radius:20px;
+  border:1.5px solid var(--gold);background:transparent;
+  color:var(--gold);font-size:.75rem;
+  font-family:'Noto Sans KR',sans-serif;
+  cursor:pointer;transition:all .2s;
+}
+.ctrl-btn:hover{background:var(--gold);color:var(--dark);}
+#filter-bar{
+  flex-shrink:0;background:rgba(13,10,6,.97);
+  padding:5px 16px;display:flex;gap:7px;align-items:center;
+  border-bottom:1px solid rgba(200,169,110,.2);
+}
+.filter-btn{
+  padding:3px 12px;border-radius:16px;border:1.5px solid;
+  font-size:.68rem;font-family:'Noto Sans KR',sans-serif;
+  cursor:pointer;transition:all .2s;background:transparent;
+}
+.filter-btn.all-btn{border-color:var(--gold);color:var(--gold);}
+.filter-btn.all-btn.active,.filter-btn.all-btn:hover{background:var(--gold);color:var(--dark);}
+.filter-btn.deungga-btn{border-color:#5a8abf;color:#5a8abf;}
+.filter-btn.deungga-btn.active,.filter-btn.deungga-btn:hover{background:#5a8abf;color:#fff;}
+.filter-btn.heunga-btn{border-color:#bf5a5a;color:#bf5a5a;}
+.filter-btn.heunga-btn.active,.filter-btn.heunga-btn:hover{background:#bf5a5a;color:#fff;}
+.filter-btn.both-btn{border-color:#5abf80;color:#5abf80;}
+.filter-btn.both-btn.active,.filter-btn.both-btn:hover{background:#5abf80;color:#fff;}
+#activity-main{
+  flex:1;display:flex;overflow:hidden;
+}
+#side{
+  width:180px;flex-shrink:0;
+  background:rgba(13,10,6,.98);
+  border-left:2px solid rgba(200,169,110,.3);
+  display:flex;flex-direction:column;overflow:hidden;
+  padding:6px 4px;gap:4px;
+}
+#side h2{
+  font-family:'Noto Serif KR',serif;
+  font-size:.82rem;font-weight:700;
+  color:var(--gold);text-align:center;
+  padding-bottom:4px;
+  border-bottom:1px solid rgba(200,169,110,.3);
+  flex-shrink:0;
+}
+.zone-label{
+  font-family:'Noto Serif KR',serif;
+  font-size:.72rem;font-weight:900;
+  padding:3px 16px;border-radius:12px;
+  letter-spacing:.05em;flex-shrink:0;
+}
+#lbl-deungga{
+  background:rgba(30,58,95,.92);color:#a8d0f5;
+  border:1.5px solid #5a8abf;
+}
+#lbl-heunga{
+  background:rgba(95,30,30,.92);color:#f5b0b0;
+  border:1.5px solid #bf5a5a;
+}
+.drop-zone{
+  width:52px;height:50px;border-radius:8px;
+  border:2px dashed rgba(120,90,40,.55);
+  background:rgba(255,255,255,.28);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  transition:all .22s;cursor:pointer;
+  flex-shrink:0;overflow:hidden;position:relative;
+}
+.drop-zone .dz-label{
+  font-size:.55rem;font-weight:700;
+  text-align:center;line-height:1.3;
+  pointer-events:none;padding:0 2px;
+  color:rgba(40,25,5,.8);
+}
+.drop-zone.hover{
+  border-color:var(--gold);border-style:solid;
+  background:rgba(200,169,110,.3);transform:scale(1.08);
+}
+.drop-zone.correct{border-style:solid;cursor:default;}
+.drop-zone.correct-deungga{border-color:#5a8abf;background:rgba(30,58,95,.12);}
+.drop-zone.correct-heunga{border-color:#bf5a5a;background:rgba(95,30,30,.12);}
+.drop-zone.correct-both{border-color:#5abf80;background:rgba(30,95,58,.12);}
+.drop-zone.wrong{
+  border-color:var(--wrong);border-style:solid;
+  animation:shake .4s ease;
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  20%{transform:translateX(-6px);}
+  40%{transform:translateX(6px);}
+  60%{transform:translateX(-4px);}
+  80%{transform:translateX(4px);}
+}
+.dz-check{
+  position:absolute;top:1px;right:2px;
+  font-size:.62rem;pointer-events:none;
+}
+#ghost{
+  position:fixed;pointer-events:none;z-index:9999;
+  display:none;flex-direction:column;align-items:center;
+  padding:5px 8px;background:rgba(13,10,6,.93);
+  border:2px solid var(--gold);border-radius:8px;
+  transform:translate(-50%,-50%);gap:2px;
+}
+#ghost img{width:38px;height:34px;object-fit:contain;}
+#ghost span{font-size:.68rem;color:var(--gold);}
+#toast{
+  position:fixed;bottom:60px;left:50%;
+  transform:translateX(-50%);
+  z-index:9998;padding:9px 24px;border-radius:24px;
+  background:rgba(13,10,6,.95);
+  border:2px solid var(--gold);
+  font-size:.8rem;color:var(--gold);
+  opacity:0;transition:all .3s;
+  pointer-events:none;white-space:nowrap;
+}
+#toast.show{opacity:1;}
+
+/* ══ 슬라이드 10: 악기 배치도 ══ */
+#s10 {
+  background: #000;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+#s10 img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+</style>
+</head>
+<body>
+
+<!-- 내비게이션 화살표 -->
+<button class="nav-arrow" id="arrow-left" onclick="goPrev()">&#8592;</button>
+<button class="nav-arrow" id="arrow-right" onclick="goNext()">&#8594;</button>
+<div id="slide-counter"></div>
+
+<!-- 팝업 모달 -->
+<div id="modal-overlay" onclick="closeModalOutside(event)">
+  <div id="modal-box">
+    <div id="modal-header">
+      <span id="modal-zone-badge"></span>
+      <h3 id="modal-name"></h3>
+      <button id="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body">
+      <div id="modal-img-area">
+        <img id="modal-img" src="" alt=""/>
+      </div>
+      <div id="modal-text-area">
+        <div id="modal-hanja"></div>
+        <div id="modal-desc"></div>
+        <div id="modal-tags"></div>
+        <a id="modal-yt-btn" href="#" target="_blank">▶ 유튜브에서 감상하기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 고스트 & 토스트 -->
+<div id="ghost">
+  <img id="ghost-img" src="" alt=""/>
+  <span id="ghost-name"></span>
+</div>
+<div id="toast"></div>
+
+<div id="slider-wrap">
+<div id="slider">
+
+<!-- ══ 슬라이드 1: 표지 ══ -->
+<div class="slide" id="s1">
+  <div class="cover-wrap">
+    <div class="cover-bg"></div>
+    <div class="cover-content">
+      <img class="cover-img" src="정전.jpg" alt="종묘 정전"/>
+      <div class="cover-title">종묘제례악</div>
+      <div class="cover-sub">宗廟祭禮樂 — 600년의 소리</div>
+      <div class="cover-badge">UNESCO 인류무형문화유산 · 국가무형문화재 제1호</div>
+      <div class="cover-hint">▶ 화살표로 탐구를 시작하세요</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 슬라이드 2: 목차 ══ -->
+<div class="slide" id="s2">
+  <div class="toc-wrap">
+    <div class="slide-header">
+      <h2>목차</h2>
+      <span class="snum">2 / 9</span>
+    </div>
+    <div class="toc-body">
+      <div class="toc-item" onclick="goTo(2)">
+        <div class="toc-num">01</div>
+        <div><div class="toc-text">종묘제례악이란?</div>
+        <div class="toc-sub">정의와 개요</div></div>
+      </div>
+      <div class="toc-item" onclick="goTo(3)">
+        <div class="toc-num">02</div>
+        <div><div class="toc-text">공간과 장소</div>
+        <div class="toc-sub">종묘 정전 · 등가 · 헌가</div></div>
+      </div>
+      <div class="toc-item" onclick="goTo(4)">
+        <div class="toc-num">03</div>
+        <div><div class="toc-text">역사 타임라인</div>
+        <div class="toc-sub">고려 ~ 현재</div></div>
+      </div>
+      <div class="toc-item" onclick="goTo(5)">
+        <div class="toc-num">04</div>
+        <div><div class="toc-text">제례 절차</div>
+        <div class="toc-sub">제사 순서와 의미</div></div>
+      </div>
+      <div class="toc-item" onclick="goTo(6)">
+        <div class="toc-num">05</div>
+        <div><div class="toc-text">보태평 · 정대업</div>
+        <div class="toc-sub">두 가지 음악</div></div>
+      </div>
+      <div class="toc-item" onclick="goTo(7)">
+        <div class="toc-num">06</div>
+        <div><div class="toc-text">종묘제례악에 사용되는 악기들</div>
+        <div class="toc-sub">15개 악기 클릭 탐구</div></div>
+      </div>
+      <div class="toc-item" onclick="goTo(8)">
+        <div class="toc-num">07</div>
+        <div><div class="toc-text">악기 배치 활동</div>
+        <div class="toc-sub">드래그앤드롭 체험</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 슬라이드 3: 정의 ══ -->
+<div class="slide info-slide" id="s3">
+  <div class="info-wrap">
+    <div class="slide-header">
+      <h2>종묘제례악이란?</h2>
+      <span class="snum">3 / 9</span>
+    </div>
+    <div class="info-body two-col">
+      <div class="info-img-area">
+        <img class="info-img" src="종묘제례악 일무.jpg" alt="종묘제례악"/>
+      </div>
+      <div class="info-text-area">
+        <span class="info-label">정의</span>
+        <div class="info-title">종묘제례악</div>
+        <div class="info-hanja">宗廟祭禮樂</div>
+        <div class="info-desc">
+          조선 시대 역대 <strong>왕과 왕비의 신위</strong>를 모신 사당
+          <strong>종묘(宗廟)</strong>에서 제사를 지낼 때 연주하던
+          <em>음악 · 노래 · 춤</em>을 통칭합니다.<br/><br/>
+          단순한 음악이 아니라 국가의 <strong>정통성과 왕실의 권위</strong>를
+          상징하는 의례적 행위로,
+          <strong>악(樂) · 가(歌) · 무(舞)</strong>가 하나로 어우러집니다.<br/><br/>
+          <strong>2001년</strong> 유네스코 인류무형문화유산으로 등재되었으며,
+          매년 <strong>5월 첫째 일요일</strong> 종묘대제에서 실제로 연주됩니다.
+        </div>
+        <div class="info-tags">
+          <span class="tag">UNESCO 인류무형문화유산</span>
+          <span class="tag">국가무형문화재 제1호</span>
+          <span class="tag">악·가·무 통합예술</span>
+          <span class="tag">조선 왕실 제례</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 슬라이드 4: 공간/장소 ══ -->
+<div class="slide info-slide" id="s4">
+  <div class="info-wrap">
+    <div class="slide-header">
+      <h2>공간과 장소 — 종묘 정전</h2>
+      <span class="snum">4 / 9</span>
+    </div>
+    <div class="info-body img-wide">
+      <div class="info-img-area" style="padding:0;overflow:hidden;">
+        <div class="jongmyo-img-wrap">
+          <img src="종묘제례악 마당 이미지.png" alt="종묘 배치도"/>
+        </div>
+      </div>
+      <div class="info-text-area">
+        <span class="info-label">공간 구성</span>
+        <div class="info-title" style="font-size:1.4rem;">등가 vs 헌가</div>
+        <div class="info-desc">
+          <strong style="color:#a8c8f0;font-size:1.05rem;">🔵 등가(登歌)</strong><br/>
+          정전 건물의 <strong>댓돌(월대) 위</strong>에서 연주합니다.
+          악기 수가 적고 음색이 <strong>차분하고 절제</strong>됩니다.<br/><br/>
+          <strong style="color:#f0a8a8;font-size:1.05rem;">🔴 헌가(軒架)</strong><br/>
+          댓돌 아래 <strong>넓은 마당</strong>에서 연주합니다.
+          등가보다 규모가 크고 <strong>웅장하며 화려</strong>합니다.<br/><br/>
+          <strong style="color:#a8f0c0;font-size:1.05rem;">🟢 일무(佾舞)</strong><br/>
+          마당 중앙에서 추는 <strong>의식 춤</strong>으로,
+          문무(文舞)와 무무(武舞)가 있습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 슬라이드 5: 역사 타임라인 ══ -->
+<div class="slide info-slide" id="s5">
+  <div class="info-wrap">
+    <div class="slide-header">
+      <h2>역사 타임라인</h2>
+      <span class="snum">5 / 9</span>
+    </div>
+    <div class="info-body two-col">
+      <div class="info-img-area">
+        <img class="info-img" src="정전.jpg" alt="종묘 정전"/>
+      </div>
+      <div class="info-text-area">
+        <span class="info-label">역사</span>
+        <div class="info-title">600년의 역사</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">고려</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text">중국 <strong>송나라 아악(雅樂)</strong> 도입 — 외래 음악 중심</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1418~</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text"><strong>세종대왕</strong>, 우리 고유 선율 기반의 궁중음악 창제. 박연과 함께 악기·악보 정비</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1447</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text"><strong>보태평·정대업</strong> 창작 — 세종이 직접 작곡한 회례악</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1464</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text"><strong>세조</strong>, 보태평·정대업을 종묘제례악으로 확정. 지금의 체계 완성</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1493</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text">성종 때 <strong>악학궤범(樂學軌範)</strong> 편찬 — 악기·악보·무용 체계 집대성</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1975</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text"><strong>국가무형문화재 제1호</strong> 지정 — 전통 보존 공식화</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2001</div>
+            <div class="tl-dot"></div>
+            <div class="tl-text"><strong>UNESCO</strong> 인류무형문화유산 등재 — 세계적 가치 인정</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 슬라이드 6: 제례 절차 ══ -->
+<div class="slide info-slide" id="s6">
+  <div class="info-wrap">
+    <div class="slide-header">
+      <h2>제례 절차</h2>
+      <span class="snum">6 / 9</span>
+    </div>
+    <div class="info-body one-col">
+      <div class="procedure-grid">
+        <div class="proc-card">
+          <div class="proc-num">01</div>
+          <div class="proc-title">영신(迎神)</div>
+          <div class="proc-desc">신을 맞이하는 절차. <strong>헌가</strong>에서 음악 연주 시작</div>
+        </div>
+        <div class="proc-card">
+          <div class="proc-num">02</div>
+          <div class="proc-title">전폐(奠幣)</div>
+          <div class="proc-desc">폐백(비단)을 올리는 절차. <strong>등가</strong>에서 보태평 연주</div>
+        </div>
+        <div class="proc-card">
+          <div class="proc-num">03</div>
+          <div class="proc-title">초헌(初獻)</div>
+          <div class="proc-desc">첫 번째 술잔을 올리는 절차. <strong>보태평</strong> 11곡 연주</div>
+        </div>
+        <div class="proc-card">
+          <div class="proc-num">04</div>
+          <div class="proc-title">아헌(亞獻)</div>
+          <div class="proc-desc">두 번째 술잔을 올리는 절차. <strong>정대업</strong> 연주 시작</div>
+        </div>
+        <div class="proc-card">
+          <div class="proc-num">05</div>
+          <div class="proc-title">종헌(終獻)</div>
+          <div class="proc-desc">세 번째이자 마지막 술잔. <strong>정대업</strong> 계속 연주</div>
+        </div>
+        <div class="proc-card">
+          <div class="proc-num">06</div>
+          <div class="proc-title">송신(送神)</div>
+          <div class="proc-desc">신을 보내드리는 절차. <strong>헌가</strong>에서 마무리 음악</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+            
+<!-- ══ 슬라이드 7: 보태평·정대업 ══ -->
+<div class="slide info-slide" id="s7">
+  <div class="info-wrap">
+    <div class="slide-header">
+      <h2>보태평 · 정대업</h2>
+      <span class="snum">7 / 9</span>
+    </div>
+    <div class="info-body one-col">
+      <div class="info-text-area" style="padding:32px 48px; gap:0; justify-content:center;">
+        <div class="music-cards" style="height:auto; align-items:stretch; gap:28px;">
+
+          <!-- 보태평 카드 -->
+          <div class="music-card" style="padding:32px 36px; gap:16px; border:2px solid rgba(201,168,76,.4); border-radius:18px;">
+            <h3 style="font-size:1.8rem;">보태평 保太平</h3>
+            <div class="hanja" style="font-size:1rem;">문덕(文德)을 기리는 음악</div>
+            <p style="font-size:1rem; line-height:2;">역대 왕들의 <strong>문치(文治)와 덕(德)</strong>을 찬양합니다.
+            제사의 <strong>초헌(첫 번째 헌작)</strong> 절차에서 연주됩니다.</p>
+            <div class="tracks" style="gap:7px;">
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">희문</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">기명</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">귀인</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">형가</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">즙수</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">옹안</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">역성</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">납씨</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">추유</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">정세</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">대유</span>
+            </div>
+            <a href="https://www.youtube.com/watch?v=F5wv7vp78iA"
+               target="_blank"
+               style="display:flex;align-items:center;justify-content:center;gap:8px;
+                      margin-top:12px;padding:12px 20px;border-radius:24px;
+                      background:rgba(180,0,0,.9);color:#fff;
+                      text-decoration:none;font-size:.95rem;font-weight:700;
+                      letter-spacing:.05em;transition:opacity .2s;width:100%;"
+               onmouseover="this.style.opacity='.75'"
+               onmouseout="this.style.opacity='1'">
+              ▶ 보태평 영상 감상하기
+            </a>
+          </div>
+
+          <!-- 정대업 카드 -->
+          <div class="music-card" style="padding:32px 36px; gap:16px; border:2px solid rgba(201,168,76,.4); border-radius:18px;">
+            <h3 style="font-size:1.8rem;">정대업 定大業</h3>
+            <div class="hanja" style="font-size:1rem;">무공(武功)을 기리는 음악</div>
+            <p style="font-size:1rem; line-height:2;">역대 왕들의 <strong>무공(武功)과 업적</strong>을 찬양합니다.
+            <strong>아헌·종헌(두·세 번째 헌작)</strong> 절차에서 연주됩니다.</p>
+            <div class="tracks" style="gap:7px;">
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">소무</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">독경</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">탁정</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">선위</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">신정</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">분웅</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">순응</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">총유</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">정동</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">평만</span>
+              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">영관</span>
+            </div>
+            <a href="https://www.youtube.com/watch?v=f2AJqzqSqq0"
+               target="_blank"
+               style="display:flex;align-items:center;justify-content:center;gap:8px;
+                      margin-top:12px;padding:12px 20px;border-radius:24px;
+                      background:rgba(180,0,0,.9);color:#fff;
+                      text-decoration:none;font-size:.95rem;font-weight:700;
+                      letter-spacing:.05em;transition:opacity .2s;width:100%;"
+               onmouseover="this.style.opacity='.75'"
+               onmouseout="this.style.opacity='1'">
+              ▶ 정대업 영상 감상하기
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /#s7 -->
+
+<!-- ══ 슬라이드 8: 악기 갤러리 ══ -->
+<div class="slide" id="s8">
+  <div class="gallery-wrap">
+    <div class="slide-header">
+      <h2>🎶 종묘제례악에 사용되는 악기들</h2>
+      <span class="snum">8 / 9</span>
+    </div>
+    <div class="gallery-body">
+      <div class="gallery-card" onclick="openModal('편종')">
+        <img src="편종.png" alt="편종"/>
+        <div class="gc-name">편종</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('편경')">
+        <img src="편경.png" alt="편경"/>
+        <div class="gc-name">편경</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('방향')">
+        <img src="방향.jpg" alt="방향"/>
+        <div class="gc-name">방향</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('대금')">
+        <img src="대금.jpg" alt="대금"/>
+        <div class="gc-name">대금</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('당피리')">
+        <img src="당피리.png" alt="당피리"/>
+        <div class="gc-name">당피리</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('장구')">
+        <img src="장구.jpg" alt="장구"/>
+        <div class="gc-name">장구</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('어')">
+        <img src="어.png" alt="어"/>
+        <div class="gc-name">어</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('축')">
+        <img src="축.png" alt="축"/>
+        <div class="gc-name">축</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('박')">
+        <img src="박.png" alt="박"/>
+        <div class="gc-name">박</div>
+        <div class="gc-badge badge-both">등가+헌가</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('아쟁')">
+        <img src="아쟁.jpg" alt="아쟁"/>
+        <div class="gc-name">아쟁</div>
+        <div class="gc-badge badge-dg">등가 전용</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('절고')">
+        <img src="절고.jpg" alt="절고"/>
+        <div class="gc-name">절고</div>
+        <div class="gc-badge badge-dg">등가 전용</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('태평소')">
+        <img src="태평소.png" alt="태평소"/>
+        <div class="gc-name">태평소</div>
+        <div class="gc-badge badge-hg">헌가 전용</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('진고')">
+        <img src="진고.jpg" alt="진고"/>
+        <div class="gc-name">진고</div>
+        <div class="gc-badge badge-hg">헌가 전용</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('해금')">
+        <img src="해금.png" alt="해금"/>
+        <div class="gc-name">해금</div>
+        <div class="gc-badge badge-hg">헌가 전용</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+      <div class="gallery-card" onclick="openModal('일무')">
+        <img src="일무.png" alt="일무"/>
+        <div class="gc-name">일무</div>
+        <div class="gc-badge badge-hg">의식 춤</div>
+        <div class="gc-hint">클릭하여 상세보기</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 슬라이드 9 — 악기 배치 활동 ════════ -->
+<div class="slide" id="s9">
+
+  <div id="act-header">
+    <div>
+      <h1 style="font-family:'Noto Serif KR',serif;font-size:1.1rem;font-weight:900;color:var(--gold);letter-spacing:.08em;">
+        🎵 종묘제례악 — 악기 배치 활동
+      </h1>
+      <div style="font-size:.65rem;color:#b8a882;margin-top:1px;">악기 카드를 드래그하거나 클릭하여 배치해보세요</div>
+    </div>
+    <div class="hdr-right">
+      <div id="score-box">0 / 22</div>
+      <button class="ctrl-btn" id="answer-btn" onclick="showAnswer()">📖 정답 보기</button>
+      <button class="ctrl-btn" onclick="resetAll()">🔄 초기화</button>
+    </div>
+  </div>
+
+  <div id="filter-bar">
+    <span style="font-size:.65rem;color:#b8a882;margin-right:2px;">악기 분류 :</span>
+    <button class="filter-btn all-btn active"  onclick="filterPieces('all')">전체</button>
+    <button class="filter-btn deungga-btn"     onclick="filterPieces('deungga')">🔵 등가 전용</button>
+    <button class="filter-btn heunga-btn"      onclick="filterPieces('heunga')">🔴 헌가 전용</button>
+    <button class="filter-btn both-btn"        onclick="filterPieces('both')">🟢 등가+헌가 공통</button>
+  </div>
+
+  <div id="activity-main">
+
+    <div id="board-wrap">
+      <div id="board-container">
+        <div id="board-title">🏛 종묘제례악 국악기 배치도</div>
+        <div id="board">
+          <img id="board-bg" src="종묘제례악_배치도.png" alt="배치도"/>
+
+          <!-- 등가 구역 -->
+          <div class="zone-section" style="justify-content:flex-end; padding-bottom:12px;">
+  <div class="zone-label" id="lbl-deungga">🔵 등가 (堂上 — 월대 위)</div>
+            <div class="dz-row">
+              <div class="drop-zone" id="dz-박-등가"     data-name="박"    data-zone="deungga"><div class="dz-label">박</div></div>
+              <div class="drop-zone" id="dz-아쟁"         data-name="아쟁"  data-zone="deungga"><div class="dz-label">아쟁</div></div>
+            </div>
+            <div class="dz-row">
+              <div class="drop-zone" id="dz-대금-등가"   data-name="대금"   data-zone="deungga"><div class="dz-label">대금</div></div>
+              <div class="drop-zone" id="dz-장구-등가"   data-name="장구"   data-zone="deungga"><div class="dz-label">장구</div></div>
+              <div class="drop-zone" id="dz-당피리-등가" data-name="당피리" data-zone="deungga"><div class="dz-label">당피리</div></div>
+            </div>
+            <div class="dz-row">
+              <div class="drop-zone" id="dz-어-등가"     data-name="어"    data-zone="deungga"><div class="dz-label">어</div></div>
+              <div class="drop-zone" id="dz-방향-등가"   data-name="방향"  data-zone="deungga"><div class="dz-label">방향</div></div>
+              <div class="drop-zone" id="dz-편경-등가"   data-name="편경"  data-zone="deungga"><div class="dz-label">편경</div></div>
+              <div class="drop-zone" id="dz-절고"         data-name="절고"  data-zone="deungga"><div class="dz-label">절고</div></div>
+              <div class="drop-zone" id="dz-축-등가"     data-name="축"    data-zone="deungga"><div class="dz-label">축</div></div>
+              <div class="drop-zone" id="dz-편종-등가"   data-name="편종"  data-zone="deungga"><div class="dz-label">편종</div></div>
+            </div>
+          </div>
+
+          <div class="zone-divider"></div>
+
+          <!-- 헌가 구역 -->
+          <div class="zone-section" style="justify-content:flex-start; padding-top:8px;">
+  <div class="zone-label" id="lbl-heunga">🔴 헌가 (堂下 — 월대 아래)</div>
+            <div class="dz-row">
+              <div class="drop-zone" id="dz-일무"         data-name="일무"  data-zone="heunga"><div class="dz-label">일무</div></div>
+              <div class="drop-zone" id="dz-박-헌가"     data-name="박"    data-zone="heunga"><div class="dz-label">박</div></div>
+            </div>
+            <div class="dz-row">
+              <div class="drop-zone" id="dz-진고"         data-name="진고"  data-zone="heunga"><div class="dz-label">진고</div></div>
+              <div class="drop-zone" id="dz-편종-헌가"   data-name="편종"  data-zone="heunga"><div class="dz-label">편종</div></div>
+              <div class="drop-zone" id="dz-어-헌가"     data-name="어"    data-zone="heunga"><div class="dz-label">어</div></div>
+              <div class="drop-zone" id="dz-태평소"       data-name="태평소" data-zone="heunga"><div class="dz-label">태평소</div></div>
+              <div class="drop-zone" id="dz-축-헌가"     data-name="축"    data-zone="heunga"><div class="dz-label">축</div></div>
+              <div class="drop-zone" id="dz-편경-헌가"   data-name="편경"  data-zone="heunga"><div class="dz-label">편경</div></div>
+              <div class="drop-zone" id="dz-방향-헌가"   data-name="방향"  data-zone="heunga"><div class="dz-label">방향</div></div>
+            </div>
+            <div class="dz-row">
+              <div class="drop-zone" id="dz-당피리-헌가" data-name="당피리" data-zone="heunga"><div class="dz-label">당피리</div></div>
+              <div class="drop-zone" id="dz-장구-헌가"   data-name="장구"  data-zone="heunga"><div class="dz-label">장구</div></div>
+              <div class="drop-zone" id="dz-대금-헌가"   data-name="대금"  data-zone="heunga"><div class="dz-label">대금</div></div>
+              <div class="drop-zone" id="dz-해금"         data-name="해금"  data-zone="heunga"><div class="dz-label">해금</div></div>
+            </div>
+          </div>
+
+        </div><!-- /#board -->
+      </div>
+    </div><!-- /#board-wrap -->
+
+    <div id="side">
+      <h2>🎶 악기 목록</h2>
+      <div class="side-hint">드래그 또는 클릭 후<br/>위치 클릭으로 배치</div>
+      <div id="legend">
+        <div class="leg-item"><div class="leg-dot" style="background:#5a8abf"></div>등가</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#bf5a5a"></div>헌가</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#5abf80"></div>공통</div>
+      </div>
+      <div id="pieces-wrap">
+        <div class="piece deungga" data-name="아쟁"   data-type="deungga" draggable="true"><img src="아쟁.jpg"    alt="아쟁"/><div class="pname">아쟁</div></div>
+        <div class="piece deungga" data-name="절고"   data-type="deungga" draggable="true"><img src="절고.jpg"   alt="절고"/><div class="pname">절고</div></div>
+        <div class="piece heunga"  data-name="태평소" data-type="heunga"  draggable="true"><img src="태평소.png" alt="태평소"/><div class="pname">태평소</div></div>
+        <div class="piece heunga"  data-name="진고"   data-type="heunga"  draggable="true"><img src="진고.jpg"   alt="진고"/><div class="pname">진고</div></div>
+        <div class="piece heunga"  data-name="해금"   data-type="heunga"  draggable="true"><img src="해금.png"   alt="해금"/><div class="pname">해금</div></div>
+        <div class="piece heunga"  data-name="일무"   data-type="heunga"  draggable="true"><img src="일무.png"   alt="일무"/><div class="pname">일무</div></div>
+        <div class="piece both"    data-name="편종"   data-type="both"    draggable="true"><img src="편종.png"   alt="편종"/><div class="pname">편종①</div></div>
+        <div class="piece both"    data-name="편종"   data-type="both"    draggable="true"><img src="편종.png"   alt="편종"/><div class="pname">편종②</div></div>
+        <div class="piece both"    data-name="편경"   data-type="both"    draggable="true"><img src="편경.png"   alt="편경"/><div class="pname">편경①</div></div>
+        <div class="piece both"    data-name="편경"   data-type="both"    draggable="true"><img src="편경.png"   alt="편경"/><div class="pname">편경②</div></div>
+        <div class="piece both"    data-name="방향"   data-type="both"    draggable="true"><img src="방향.jpg"   alt="방향"/><div class="pname">방향①</div></div>
+        <div class="piece both"    data-name="방향"   data-type="both"    draggable="true"><img src="방향.jpg"   alt="방향"/><div class="pname">방향②</div></div>
+        <div class="piece both"    data-name="대금"   data-type="both"    draggable="true"><img src="대금.jpg"   alt="대금"/><div class="pname">대금①</div></div>
+        <div class="piece both"    data-name="대금"   data-type="both"    draggable="true"><img src="대금.jpg"   alt="대금"/><div class="pname">대금②</div></div>
+        <div class="piece both"    data-name="당피리" data-type="both"    draggable="true"><img src="당피리.png" alt="당피리"/><div class="pname">당피리①</div></div>
+        <div class="piece both"    data-name="당피리" data-type="both"    draggable="true"><img src="당피리.png" alt="당피리"/><div class="pname">당피리②</div></div>
+        <div class="piece both"    data-name="장구"   data-type="both"    draggable="true"><img src="장구.jpg"   alt="장구"/><div class="pname">장구①</div></div>
+        <div class="piece both"    data-name="장구"   data-type="both"    draggable="true"><img src="장구.jpg"   alt="장구"/><div class="pname">장구②</div></div>
+        <div class="piece both"    data-name="어"     data-type="both"    draggable="true"><img src="어.png"     alt="어"/><div class="pname">어①</div></div>
+        <div class="piece both"    data-name="어"     data-type="both"    draggable="true"><img src="어.png"     alt="어"/><div class="pname">어②</div></div>
+        <div class="piece both"    data-name="축"     data-type="both"    draggable="true"><img src="축.png"     alt="축"/><div class="pname">축①</div></div>
+        <div class="piece both"    data-name="축"     data-type="both"    draggable="true"><img src="축.png"     alt="축"/><div class="pname">축②</div></div>
+        <div class="piece both"    data-name="박"     data-type="both"    draggable="true"><img src="박.png"     alt="박"/><div class="pname">박①</div></div>
+        <div class="piece both"    data-name="박"     data-type="both"    draggable="true"><img src="박.png"     alt="박"/><div class="pname">박②</div></div>
+      </div>
+    </div>
+
+  </div><!-- /#activity-main -->
+</div><!-- /#s9 -->
+
+<!-- ════════ 슬라이드 10 — 악기 배치도 ════════ -->
+<div class="slide" id="s10" style="background:#000;display:flex;align-items:center;justify-content:center;">
+  <img src="종묘제례악_배치도.png" style="max-width:100%;max-height:100vh;object-fit:contain;">
+</div>
+
+</div><!-- /#slider -->
+</div><!-- /#slider-wrap -->
+
+<script>
+/* ═══════════════════════════════════════
+   슬라이더
+═══════════════════════════════════════ */
+const TOTAL_SLIDES = document.querySelectorAll('.slide').length;
+let currentSlide = 0;
+let modalOpen = false;
+
+function buildDots(){
+  const ctr = document.getElementById('slide-counter');
+  ctr.innerHTML = '';
+  for(let i=0;i<TOTAL_SLIDES;i++){
+    const d = document.createElement('div');
+    d.className='dot'+(i===0?' on':'');
+    d.onclick=()=>goTo(i);
+    ctr.appendChild(d);
+  }
+}
+
+function goTo(n){
+  if(n<0||n>=TOTAL_SLIDES) return;
+  currentSlide = n;
+  document.getElementById('slider').style.transform=`translateX(-${n*100}vw)`;
+  document.querySelectorAll('.dot').forEach((d,i)=>{
+    d.className='dot'+(i===n?' on':'');
+  });
+  document.getElementById('arrow-left').className='nav-arrow'+(n===0?' disabled':'');
+  document.getElementById('arrow-right').className='nav-arrow'+(n===TOTAL_SLIDES-1?' disabled':'');
+}
+
+function goPrev(){ if(!modalOpen) goTo(currentSlide-1); }
+function goNext(){ if(!modalOpen) goTo(currentSlide+1); }
+
+document.addEventListener('keydown',e=>{
+  if(modalOpen) return;
+  if(e.key==='ArrowLeft') goPrev();
+  if(e.key==='ArrowRight') goNext();
+});
+
+let touchX=0;
+document.getElementById('slider-wrap').addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;},{passive:true});
+document.getElementById('slider-wrap').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-touchX;
+  if(Math.abs(dx)>50){ dx<0?goNext():goPrev(); }
+},{passive:true});
+
+buildDots();
+goTo(0);
+
+/* ═══════════════════════════════════════
+   악기 데이터 (모달용)
+═══════════════════════════════════════ */
+const INSTR_DATA = {
+  '편종':{hanja:'編鐘',zone:'both',zoneTxt:'등가 + 헌가',img:'편종.png',desc:'나무 틀에 <strong>16개의 청동 종</strong>을 매달아 두드리는 악기입니다.',tags:['금속 타악기','선율 악기'],yt:'https://www.youtube.com/watch?v=_G1cBWepOKs&list=RD_G1cBWepOKs&start_radio=1&t=5s=편종+종묘제례악'},
+  '편경':{hanja:'編磬',zone:'both',zoneTxt:'등가 + 헌가',img:'편경.png',desc:'나무 틀에 <strong>16개의 ㄱ자형 돌</strong>을 매달아 두드리는 악기입니다.',tags:['석제 타악기'],yt:'https://www.youtube.com/watch?v=zEhwJORJG-k&list=RDzEhwJORJG-k&start_radio=1=편경+종묘제례악'},
+  '방향':{hanja:'方響',zone:'both',zoneTxt:'등가 + 헌가',img:'방향.jpg',desc:'철판 16개를 매달아 두드리는 악기입니다.',tags:['철제 타악기'],yt:'https://www.youtube.com/results?search_query=방향+종묘제례악'},
+  '대금':{hanja:'大笒',zone:'both',zoneTxt:'등가 + 헌가',img:'대금.jpg',desc:'대나무로 만든 <strong>가로 부는 관악기</strong>입니다.',tags:['목관 악기'],yt:'https://www.youtube.com/watch?v=QajtJ7OLJ9Y&list=RDQajtJ7OLJ9Y&start_radio=1=대금+종묘제례악'},
+  '당피리':{hanja:'唐篳篥',zone:'both',zoneTxt:'등가 + 헌가',img:'당피리.png',desc:'당나라에서 전래된 <strong>세로 부는 관악기</strong>입니다.',tags:['목관 악기'],yt:'https://www.youtube.com/watch?v=EZQcfG5IlC4=당피리+종묘제례악'},
+  '장구':{hanja:'杖鼓',zone:'both',zoneTxt:'등가 + 헌가',img:'장구.jpg',desc:'모래시계 모양의 <strong>양면 타악기</strong>입니다.',tags:['타악기'],yt:'https://www.youtube.com/watch?v=BDELICZlPi8=장구+종묘제례악'},
+  '어':{hanja:'敔',zone:'both',zoneTxt:'등가 + 헌가',img:'어.png',desc:'호랑이 모양 나무를 긁어 <strong>음악의 끝</strong>을 알리는 악기입니다.',tags:['목제 타악기'],yt:'https://www.youtube.com/watch?v=h4HDhuo2W3k=어+국악기+종묘제례악'},
+  '축':{hanja:'柷',zone:'both',zoneTxt:'등가 + 헌가',img:'축.png',desc:'나무 상자를 흔들어 <strong>음악의 시작</strong>을 알리는 악기입니다.',tags:['목제 타악기'],yt:'https://www.youtube.com/watch?v=rCzHE7jef2Q=축+국악기+종묘제례악'},
+  '박':{hanja:'拍',zone:'both',zoneTxt:'등가 + 헌가',img:'박.png',desc:'나무판을 손으로 쳐서 <strong>박자의 기준</strong>을 잡는 악기입니다.',tags:['목제 타악기'],yt:'https://www.youtube.com/watch?v=o47ZxkGsM3c=박+국악기+종묘제례악'},
+  '아쟁':{hanja:'牙箏',zone:'deungga',zoneTxt:'등가 전용',img:'아쟁.jpg',desc:'7현의 <strong>활로 켜는 현악기</strong>입니다.',tags:['찰현 악기','등가 전용'],yt:'https://www.youtube.com/watch?v=eG7hUrETTQY&list=RDeG7hUrETTQY&start_radio=1=아쟁+종묘제례악'},
+  '절고':{hanja:'節鼓',zone:'deungga',zoneTxt:'등가 전용',img:'절고.jpg',desc:'등가에서 <strong>박자를 조절</strong>하는 작은 북입니다.',tags:['타악기','등가 전용'],yt:'https://www.youtube.com/watch?v=n1JF1mN43EI=절고+종묘제례악'},
+  '태평소':{hanja:'太平簫',zone:'heunga',zoneTxt:'헌가 전용',img:'태평소.png',desc:'나팔처럼 끝이 퍼진 <strong>더블 리드 관악기</strong>입니다.',tags:['목관 악기','헌가 전용'],yt:'https://www.youtube.com/watch?v=rRuttF-i7aU&list=RDrRuttF-i7aU&start_radio=1=태평소+종묘제례악'},
+  '진고':{hanja:'晉鼓',zone:'heunga',zoneTxt:'헌가 전용',img:'진고.jpg',desc:'헌가에서 사용하는 <strong>큰 북</strong>입니다.',tags:['타악기','헌가 전용'],yt:'https://www.youtube.com/watch?v=4pbL8XvsCMk&t=466s=진고+종묘제례악'},
+  '해금':{hanja:'奚琴',zone:'heunga',zoneTxt:'헌가 전용',img:'해금.png',desc:'두 줄의 현을 <strong>말총 활로 켜는 현악기</strong>입니다.',tags:['찰현 악기','헌가 전용'],yt:'https://www.youtube.com/watch?v=xyLDZYt_Uhg=해금+종묘제례악'},
+  '일무':{hanja:'佾舞',zone:'heunga',zoneTxt:'헌가 구역',img:'일무.png',desc:'문무와 무무로 이루어진 <strong>의식 춤</strong>입니다.',tags:['의식 무용'],yt:'https://www.youtube.com/watch?v=BVgHDmNw28U=일무+종묘제례악'}
+};
+
+const ZONE_STYLE={
+  both:{bg:'rgba(26,95,42,.9)',color:'#a8f0c0',border:'#5abf80'},
+  deungga:{bg:'rgba(30,58,95,.9)',color:'#a8c8f0',border:'#5a8abf'},
+  heunga:{bg:'rgba(95,30,30,.9)',color:'#f0a8a8',border:'#bf5a5a'}
+};
+
+function openModal(name){
+  const d = INSTR_DATA[name]; if(!d) return;
+  const zs = ZONE_STYLE[d.zone];
+  const badge = document.getElementById('modal-zone-badge');
+  badge.textContent = d.zoneTxt;
+  badge.style.cssText=`background:${zs.bg};color:${zs.color};border:1.5px solid ${zs.border};padding:4px 14px;border-radius:16px;font-size:.76rem;font-weight:700;`;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-hanja').textContent = d.hanja;
+  document.getElementById('modal-img').src = d.img;
+  document.getElementById('modal-desc').innerHTML = d.desc;
+  document.getElementById('modal-tags').innerHTML = d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+  document.getElementById('modal-yt-btn').href = d.yt;
+  document.getElementById('modal-overlay').classList.add('show');
+  modalOpen = true;
+}
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('show');
+  modalOpen = false;
+}
+function closeModalOutside(e){
+  if(e.target===document.getElementById('modal-overlay')) closeModal();
+}
+
+/* ═══════════════════════════════════════
+   배치 활동 로직
+═══════════════════════════════════════ */
+const IMG = {
+  '당피리':'당피리.png','대금':'대금.jpg','박':'박.png','방향':'방향.jpg',
+  '아쟁':'아쟁.jpg','어':'어.png','일무':'일무.png','장구':'장구.jpg',
+  '절고':'절고.jpg','진고':'진고.jpg','축':'축.png','태평소':'태평소.png',
+  '편경':'편경.png','편종':'편종.png','해금':'해금.png'
+};
+
+const ZONE_CLASS = {
+  '아쟁':'deungga','절고':'deungga',
+  '태평소':'heunga','진고':'heunga','해금':'heunga','일무':'heunga',
+  '편종':'both','편경':'both','방향':'both','대금':'both',
+  '당피리':'both','장구':'both','어':'both','축':'both','박':'both'
+};
+
+let draggingPiece = null;
+let selectedPiece = null;
+let placedMap     = {};
+let correctCount  = 0;
+
+const ghost     = document.getElementById('ghost');
+const ghostImg  = document.getElementById('ghost-img');
+const ghostName = document.getElementById('ghost-name');
+const scoreBox  = document.getElementById('score-box');
+const toastEl   = document.getElementById('toast');
+
+function getTotalDZ(){ return document.querySelectorAll('.drop-zone').length; }
+
+function updateScore(){
+  const total = getTotalDZ();
+  scoreBox.textContent = `${correctCount} / ${total}`;
+  if(correctCount >= total){
+    scoreBox.style.color = '#7ec8a0';
+    scoreBox.style.borderColor = '#7ec8a0';
+    showToast('🎉 모든 악기를 완벽하게 배치했습니다!','#7ec8a0');
+  }
+}
+
+function filterPieces(type){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  const map={'all':'.all-btn','deungga':'.deungga-btn','heunga':'.heunga-btn','both':'.both-btn'};
+  document.querySelector(map[type]).classList.add('active');
+  document.querySelectorAll('.piece').forEach(p=>{
+    if(p.classList.contains('used')) return;
+    if(type==='all'||p.dataset.type===type){
+      p.classList.remove('hidden-filter');
+    } else {
+      p.classList.add('hidden-filter');
+      if(selectedPiece===p){ p.classList.remove('selected'); selectedPiece=null; }
+    }
+  });
+  const labels={'all':'전체 악기','deungga':'🔵 등가 전용','heunga':'🔴 헌가 전용','both':'🟢 공통 악기'};
+  const colors={'all':'#c8a96e','deungga':'#5a8abf','heunga':'#bf5a5a','both':'#5abf80'};
+  showToast(labels[type], colors[type]);
+}
+
+function attemptPlace(dz, piece){
+  const need  = dz.dataset.name;
+  const given = piece.dataset.name;
+  if(placedMap[dz.id]){
+    showToast('이미 배치된 위치입니다','#b8a882'); return;
+  }
+  if(given === need){
+    const cls = ZONE_CLASS[given] || 'both';
+    dz.classList.remove('wrong');
+    dz.classList.add('correct', `correct-${cls}`);
+    dz.innerHTML = `<img class="dz-placed-img" src="${IMG[given]}" alt="${given}"/><span class="dz-check">✅</span>`;
+    placedMap[dz.id] = given;
+    piece.classList.add('used');
+    correctCount++;
+    updateScore();
+    if(selectedPiece===piece){ selectedPiece=null; }
+    showToast(`✅ 정답! ${given}`,'#2d7a3d');
+  } else {
+    dz.classList.add('wrong');
+    setTimeout(()=>dz.classList.remove('wrong'),500);
+    showToast(`❌ "${given}"은(는) 여기가 아닙니다!`,'#c0392b');
+  }
+}
+
+document.querySelectorAll('.piece').forEach(p=>{
+  p.addEventListener('click',()=>{
+    if(p.classList.contains('used')) return;
+    if(p.classList.contains('hidden-filter')) return;
+    if(selectedPiece===p){ p.classList.remove('selected'); selectedPiece=null; showToast('선택 해제','#b8a882'); return; }
+    if(selectedPiece) selectedPiece.classList.remove('selected');
+    selectedPiece=p; p.classList.add('selected');
+    showToast(`"${p.dataset.name}" 선택 — 배치할 칸을 클릭하세요`,'#c8a96e');
+  });
+  p.addEventListener('dragstart',e=>{
+    if(p.classList.contains('used')){ e.preventDefault(); return; }
+    draggingPiece=p; p.classList.add('dragging');
+    ghostImg.src=IMG[p.dataset.name]||'';
+    ghostName.textContent=p.dataset.name;
+    ghost.style.display='flex';
+    e.dataTransfer.effectAllowed='move';
+  });
+  p.addEventListener('dragend',()=>{ p.classList.remove('dragging'); ghost.style.display='none'; draggingPiece=null; });
+  p.addEventListener('touchstart',onTouchStart,{passive:false});
+  p.addEventListener('touchmove', onTouchMove, {passive:false});
+  p.addEventListener('touchend',  onTouchEnd,  {passive:false});
+});
+
+document.addEventListener('mousemove',e=>{
+  if(ghost.style.display==='flex'){ ghost.style.left=e.clientX+'px'; ghost.style.top=e.clientY+'px'; }
+});
+
+document.querySelectorAll('.drop-zone').forEach(dz=>{
+  dz.addEventListener('click',()=>{
+    if(dz.classList.contains('correct')) return;
+    if(!selectedPiece){ showToast('먼저 악기 카드를 클릭해서 선택하세요','#b8a882'); return; }
+    const p=selectedPiece; selectedPiece.classList.remove('selected'); selectedPiece=null;
+    attemptPlace(dz,p);
+  });
+  dz.addEventListener('dragover',e=>{ e.preventDefault(); if(!dz.classList.contains('correct')) dz.classList.add('hover'); });
+  dz.addEventListener('dragleave',()=>dz.classList.remove('hover'));
+  dz.addEventListener('drop',e=>{ e.preventDefault(); dz.classList.remove('hover'); if(draggingPiece&&!dz.classList.contains('correct')) attemptPlace(dz,draggingPiece); });
+});
+
+function showAnswer(){
+  const empties=[...document.querySelectorAll('.drop-zone')].filter(dz=>!dz.classList.contains('correct'));
+  if(!empties.length){ showToast('이미 모두 배치되었습니다!','#7ec8a0'); return; }
+  let delay=0;
+  empties.forEach(dz=>{
+    setTimeout(()=>{
+      const need=dz.dataset.name;
+      const p=[...document.querySelectorAll('.piece')].find(p=>p.dataset.name===need&&!p.classList.contains('used'));
+      if(p) attemptPlace(dz,p);
+    },delay);
+    delay+=80;
+  });
+  showToast('📖 정답을 자동으로 배치합니다...','#c8a96e');
+}
+
+function resetAll(){
+  correctCount=0; placedMap={};
+  if(selectedPiece){ selectedPiece.classList.remove('selected'); selectedPiece=null; }
+  document.querySelectorAll('.drop-zone').forEach(dz=>{
+    dz.className='drop-zone';
+    dz.innerHTML=`<div class="dz-label">${dz.dataset.name}</div>`;
+  });
+  document.querySelectorAll('.piece').forEach(p=>{
+    p.classList.remove('used','dragging','selected','hidden-filter');
+  });
+  scoreBox.style.color=''; scoreBox.style.borderColor='';
+  filterPieces('all');
+  updateScore();
+  showToast('🔄 초기화되었습니다','#c8a96e');
+}
+
+let toastTimer;
+function showToast(msg,color='#c8a96e'){
+  clearTimeout(toastTimer);
+  toastEl.textContent=msg;
+  toastEl.style.borderColor=color;
+  toastEl.style.color=color;
+  toastEl.classList.add('show');
+  toastTimer=setTimeout(()=>toastEl.classList.remove('show'),2400);
+}
+
+let touchPiece=null;
+function onTouchStart(e){
+  const p=e.currentTarget;
+  if(p.classList.contains('used')||p.classList.contains('hidden-filter')) return;
+  e.preventDefault();
+  touchPiece=p; draggingPiece=p; p.classList.add('dragging');
+  const t=e.touches[0];
+  ghostImg.src=IMG[p.dataset.name]||'';
+  ghostName.textContent=p.dataset.name;
+  ghost.style.display='flex';
+  ghost.style.left=t.clientX+'px'; ghost.style.top=t.clientY+'px';
+}
+function onTouchMove(e){
+  if(!touchPiece) return; e.preventDefault();
+  const t=e.touches[0];
+  ghost.style.left=t.clientX+'px'; ghost.style.top=t.clientY+'px';
+  document.querySelectorAll('.drop-zone').forEach(dz=>{
+    const r=dz.getBoundingClientRect();
+    const hit=t.clientX>=r.left&&t.clientX<=r.right&&t.clientY>=r.top&&t.clientY<=r.bottom;
+    if(hit&&!dz.classList.contains('correct')) dz.classList.add('hover');
+    else dz.classList.remove('hover');
+  });
+}
+function onTouchEnd(e){
+  if(!touchPiece) return; e.preventDefault();
+  ghost.style.display='none'; touchPiece.classList.remove('dragging');
+  const t=e.changedTouches[0];
+  document.querySelectorAll('.drop-zone').forEach(dz=>{
+    dz.classList.remove('hover');
+    const r=dz.getBoundingClientRect();
+    const hit=t.clientX>=r.left&&t.clientX<=r.right&&t.clientY>=r.top&&t.clientY<=r.bottom;
+    if(hit) attemptPlace(dz,touchPiece);
+  });
+  draggingPiece=null; touchPiece=null;
+}
+
+updateScore();
+</script>
+</body>
+</html>

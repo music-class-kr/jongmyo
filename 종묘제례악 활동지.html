@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>종묘제례악 활동지</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Serif KR',serif;
+  background:#999;
+  color:#111;
+  margin:0;padding:16px 0;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+}
+@page{size:A4 portrait;margin:0;}
+
+/* ── 페이지 공통 ── */
+.page{
+  width:210mm;
+  height:297mm;
+  margin:0 auto 16px;
+  background:#fff;
+  padding:7mm 9mm;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:0 4px 18px rgba(0,0,0,.30);
+  box-sizing:border-box;
+  overflow:hidden;
+}
+@media print{
+  html,body{width:210mm;margin:0;padding:0;background:#fff !important;}
+  .page{
+    width:210mm;height:297mm;
+    padding:7mm 9mm;
+    margin:0;box-shadow:none !important;
+    page-break-after:always;break-after:page;
+    page-break-inside:avoid;overflow:hidden;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto;}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+}
+
+/* ── 공통 요소 ── */
+.sec-title{
+  font-family:'Nanum Myeongjo',serif;
+  font-size:13pt;font-weight:800;color:#111;
+  border-bottom:2.5px solid #222;
+  padding-bottom:2px;margin-bottom:3px;
+  letter-spacing:.06em;
+}
+.sec-sub{
+  font-size:8.5pt;color:#444;margin-bottom:3px;
+  font-style:italic;line-height:1.5;
+}
+.divider{width:100%;height:1.5px;background:#bbb;}
+.chip{
+  font-size:8pt;background:#efefef;
+  border:1px solid #aaa;border-radius:10px;
+  padding:1px 6px;color:#111;
+  display:inline-block;margin:1px 2px;font-weight:700;
+}
+.blank{
+  display:inline-block;border-bottom:2.5px solid #333;
+  border-radius:2px;padding:1px 3px;
+  font-weight:800;min-width:50px;
+}
+.blank-md{min-width:72px;}
+.blank-lg{min-width:94px;}
+.page-footer{
+  border-top:1.5px solid #bbb;
+  padding-top:3px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:8pt;color:#666;font-weight:700;
+  flex-shrink:0;
+}
+.page-num{
+  width:19px;height:19px;border-radius:50%;
+  background:#222;color:#fff;font-size:8pt;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ════════════════════════════════
+   PAGE 1 — 커버
+════════════════════════════════ */
+.cover-deco{
+  padding:14px 20px 10px;
+  border:3.5px double #333;border-radius:10px;
+  text-align:center;background:#fafafa;
+}
+.cover-main-title{
+  font-family:'Nanum Myeongjo',serif;
+  font-size:44pt;font-weight:800;color:#111;
+  letter-spacing:.4em;line-height:1;margin-bottom:7px;
+}
+.cover-hanja{font-size:13.5pt;color:#555;letter-spacing:.25em;margin-bottom:8px;}
+
+/* ── 학번·이름 (제목 바로 아래) ── */
+.stu-bar-top{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-top:2px;
+}
+.stu-cell-top{
+  border:2px solid #bbb;border-radius:7px;
+  padding:9px 14px;display:flex;align-items:center;gap:10px;
+  background:#fff;
+}
+.stu-label{font-weight:800;color:#111;font-size:12pt;white-space:nowrap;}
+.stu-line{flex:1;border-bottom:2px solid #888;height:22px;}
+
+.cover-badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.cover-badge{
+  border:1.5px solid #888;border-radius:18px;
+  padding:4px 14px;font-size:9.5pt;color:#333;font-weight:700;
+}
+.cover-desc{
+  font-size:11pt;color:#444;line-height:2;
+  text-align:center;font-weight:600;
+  border:1.5px solid #ddd;border-radius:8px;
+  padding:10px 20px;background:#fafafa;
+}
+
+/* ── 목차 ── */
+.toc-wrap{
+  border:2px solid #bbb;border-radius:9px;
+  overflow:hidden;
+}
+.toc-header{
+  background:#222;color:#fff;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:12.5pt;font-weight:800;
+  letter-spacing:.15em;
+  padding:7px 16px;
+}
+.toc-body{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.toc-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 16px;
+  border-bottom:1px solid #e0e0e0;
+  font-size:10pt;font-weight:600;color:#111;
+}
+.toc-item:nth-child(odd){border-right:1px solid #e0e0e0;}
+.toc-item:nth-last-child(-n+2){border-bottom:none;}
+.toc-pg{
+  width:22px;height:22px;border-radius:50%;
+  background:#333;color:#fff;font-size:8.5pt;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.toc-dot{
+  flex:1;border-bottom:1.5px dotted #bbb;
+  height:1px;margin:0 4px;align-self:center;
+  margin-top:2px;
+}
+.toc-pnum{font-size:9pt;color:#555;font-weight:800;}
+
+.cover-sub-info{
+  border:1.5px solid #ccc;border-radius:8px;
+  padding:8px 18px;background:#fafafa;
+}
+.cover-sub-info table{width:100%;border-collapse:collapse;font-size:10pt;}
+.cover-sub-info td{padding:5px 10px;border-bottom:1px solid #e0e0e0;font-weight:600;}
+.cover-sub-info td:first-child{color:#333;width:32%;font-weight:800;}
+.cover-sub-info tr:last-child td{border-bottom:none;}
+.cover-hint{font-size:9pt;color:#888;text-align:center;font-style:italic;}
+
+/* ════════════════════════════════
+   PAGE 2 — 개념·용어·비교
+════════════════════════════════ */
+.def-box{
+  border:2px solid #bbb;border-left:5px solid #333;
+  border-radius:6px;padding:7px 11px;
+  font-size:10.5pt;line-height:1.85;color:#111;font-weight:600;
+}
+.elem-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.elem-card{border:2px solid #bbb;border-radius:7px;padding:8px 6px;text-align:center;}
+.elem-icon{font-size:15pt;display:block;margin-bottom:3px;}
+.elem-name{font-size:11.5pt;font-weight:800;color:#111;margin-bottom:2px;}
+.elem-desc{font-size:8.5pt;color:#444;line-height:1.4;font-weight:600;}
+
+.term-table{width:100%;border-collapse:collapse;font-size:10pt;}
+.term-table th{background:#e0e0e0;color:#111;padding:5px 8px;font-weight:800;border:1.5px solid #aaa;font-size:10pt;}
+.term-table td{padding:5px 8px;border:1.5px solid #bbb;vertical-align:middle;line-height:1.55;font-size:10pt;font-weight:600;}
+.term-table tr:nth-child(even) td{background:#f8f8f8;}
+.term-key{font-weight:800;color:#111;text-align:center;width:80px;}
+
+.comp-wrap{width:100%;border:2px solid #aaa;border-radius:7px;overflow:hidden;}
+.comp-head{display:grid;grid-template-columns:80px 1fr 1fr;background:#e0e0e0;border-bottom:2px solid #aaa;}
+.comp-head-cell{padding:6px 7px;text-align:center;font-weight:800;font-size:10.5pt;color:#111;}
+.comp-head-cell:not(:last-child){border-right:1.5px solid #bbb;}
+.comp-row{display:grid;grid-template-columns:80px 1fr 1fr;border-bottom:1.5px solid #ccc;}
+.comp-row:last-child{border-bottom:none;}
+.c-key{padding:9px 7px;font-weight:800;font-size:10pt;color:#111;background:#f0f0f0;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  border-right:1.5px solid #ccc;}
+.c-ans{padding:0 7px;background:#fff;display:flex;align-items:center;justify-content:center;
+  min-height:35px;font-size:9.5pt;}
+.c-ans:not(:last-child){border-right:1.5px solid #ccc;}
+
+/* ════════════════════════════════
+   PAGE 3 — 타임라인·제례절차
+════════════════════════════════ */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.story-card{
+  border-radius:7px;padding:7px 10px;
+  border:2px solid #bbb;border-left:4.5px solid #555;
+  display:flex;flex-direction:column;gap:3px;
+}
+.step-badge-sm{font-size:9pt;color:#444;font-weight:800;}
+.scene-blank{
+  font-family:'Nanum Myeongjo',serif;font-size:12.5pt;font-weight:800;
+  display:inline-block;min-width:80px;border-bottom:2.5px solid #222;
+  border-radius:2px;padding:1px 5px;color:#111;
+}
+.scene-body-sm{font-size:9pt;color:#111;line-height:1.55;font-weight:600;}
+
+/* ════════════════════════════════
+   PAGE 4 — 보태평·정대업·순서배열
+════════════════════════════════ */
+.music-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.music-box{
+  border:2px solid #bbb;border-left:5px solid #333;
+  border-radius:7px;padding:9px 11px;
+  display:flex;flex-direction:column;gap:5px;
+}
+.music-box h3{font-family:'Nanum Myeongjo',serif;font-size:13pt;font-weight:800;color:#111;}
+.music-box .mh{font-size:9pt;color:#555;font-weight:600;}
+.music-box p{font-size:9.5pt;line-height:1.65;font-weight:600;}
+.track-row{display:flex;flex-wrap:wrap;gap:3px;margin-top:2px;}
+.tr-chip{font-size:8pt;padding:1px 6px;border-radius:9px;background:#f0f0f0;border:1px solid #bbb;color:#222;font-weight:600;}
+
+.ord-table{width:100%;border-collapse:collapse;font-size:10.5pt;}
+.ord-table th{background:#e0e0e0;color:#111;padding:6px 8px;font-weight:800;text-align:center;border:1.5px solid #aaa;}
+.ord-table td{padding:7px 10px;border:1.5px solid #bbb;vertical-align:middle;line-height:1.55;font-size:10.5pt;font-weight:600;}
+.ord-table tr:nth-child(even) td{background:#f8f8f8;}
+.ord-num-cell{width:90px;text-align:center;font-size:11.5pt;font-weight:800;color:#111;white-space:nowrap;}
+
+/* ════════════════════════════════
+   PAGE 5 — 악기·감상·논술
+════════════════════════════════ */
+.instr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.instr-card{
+  border-radius:7px;padding:7px 9px;
+  border:2px solid #bbb;border-left:4.5px solid #555;
+  display:flex;flex-direction:column;gap:3px;
+}
+.instr-badge-sm{
+  font-size:7.5pt;padding:1px 6px;border-radius:9px;font-weight:800;
+  display:inline-block;align-self:flex-start;
+  border:1.5px solid #aaa;color:#111;background:#f2f2f2;
+}
+.instr-blank-name{
+  font-family:'Nanum Myeongjo',serif;font-size:13pt;font-weight:800;
+  display:inline-block;min-width:70px;border-bottom:2.5px solid #222;
+  border-radius:2px;padding:1px 5px;color:#111;
+}
+.instr-desc-sm{font-size:8.5pt;color:#111;line-height:1.5;font-weight:600;}
+.bogi-chips{display:flex;flex-wrap:wrap;gap:2px;margin-top:2px;}
+
+.feel-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.feel-card{
+  border-radius:7px;padding:8px 10px;
+  border:2px solid #bbb;border-left:4.5px solid #555;
+  display:flex;flex-direction:column;gap:4px;
+}
+.feel-badge{font-size:8.5pt;color:#444;font-weight:800;}
+.feel-icon{font-size:14pt;}
+.feel-title{font-family:'Nanum Myeongjo',serif;font-size:12pt;font-weight:800;color:#111;}
+.feel-desc{font-size:8.5pt;color:#111;line-height:1.45;font-weight:600;}
+.feel-q{font-size:8.5pt;color:#111;font-weight:800;margin-top:2px;}
+.wline{border-bottom:1.5px solid #bbb;height:19px;}
+
+.essay-box{
+  border:2px solid #bbb;border-left:5px solid #444;
+  border-radius:7px;padding:7px 12px;
+}
+.essay-q{font-size:10.5pt;font-weight:800;color:#111;line-height:1.6;margin-bottom:5px;}
+.essay-q em{font-style:normal;font-weight:800;}
+.wblock{border:1.5px solid #ccc;border-radius:5px;padding:5px 10px;
+  display:flex;flex-direction:column;gap:8px;}
+.wl{border-bottom:1.5px solid #ccc;height:20px;}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     PAGE 1 : 커버
+════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- 타이틀 + 학번·이름 통합 장식 박스 -->
+  <div class="cover-deco">
+    <div class="cover-main-title">종묘제례악</div>
+    <div class="cover-hanja">宗廟祭禮樂 — 活動紙</div>
+
+    <!-- ★ 학번·이름 : 제목 바로 아래 -->
+    <div class="stu-bar-top">
+      <div class="stu-cell-top">
+        <span class="stu-label">학&nbsp;&nbsp;&nbsp;번</span>
+        <div class="stu-line"></div>
+      </div>
+      <div class="stu-cell-top">
+        <span class="stu-label">이&nbsp;&nbsp;&nbsp;름</span>
+        <div class="stu-line"></div>
+      </div>
+    </div>
+
+    <div class="cover-badge-row">
+      <span class="cover-badge">🏛 국가무형문화재 제1호</span>
+      <span class="cover-badge">🌍 UNESCO 인류무형문화유산 2001</span>
+      <span class="cover-badge">🎶 600년의 소리</span>
+    </div>
+  </div>
+
+  <!-- 설명 -->
+  <div class="cover-desc">
+    조선 왕실의 제례 음악 · <strong>악(樂) · 가(歌) · 무(舞)</strong>가 하나로 어우러지는<br/>
+    600년 전통의 살아있는 문화유산을 탐구해 봅시다.
+  </div>
+
+  <!-- ★ 목차 -->
+  <div class="toc-wrap">
+    <div class="toc-header">📋 &nbsp;목&nbsp;&nbsp;차 &nbsp;Contents</div>
+    <div class="toc-body">
+      <div class="toc-item">
+        <div class="toc-pg">2</div>
+        <span>① 종묘제례악이란?&nbsp;— 개념 &amp; 3요소</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.2</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">2</div>
+        <span>② 주요 용어 채우기</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.2</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">2</div>
+        <span>③ 등가 &amp; 헌가 비교표</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.2</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">3</div>
+        <span>④ 역사 타임라인</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.3</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">3</div>
+        <span>⑤ 제례 절차 카드</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.3</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">4</div>
+        <span>⑥ 보태평 &amp; 정대업</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.4</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">4</div>
+        <span>⑦ 제례 절차 순서 배열</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.4</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">5</div>
+        <span>⑧ 악기 이름 맞히기</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.5</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">5</div>
+        <span>⑨ 음악 감상 — 느낌 써보기</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.5</span>
+      </div>
+      <div class="toc-item">
+        <div class="toc-pg">5</div>
+        <span>⑩ 생각 넓히기 (논술)</span>
+        <div class="toc-dot"></div>
+        <span class="toc-pnum">p.5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수업 정보 -->
+  <div class="cover-sub-info">
+    <table>
+      <tr><td>수업 주제</td><td>종묘제례악의 역사, 구성, 악기 탐구</td></tr>
+      <tr><td>학습 목표</td><td>종묘제례악의 개념과 구성 요소를 설명할 수 있다</td></tr>
+      <tr><td>활동 내용</td><td>빈칸 채우기 · 비교표 · 악기 분류 · 감상 쓰기</td></tr>
+    </table>
+  </div>
+
+  <!-- 안내 문구 -->
+  <div class="cover-hint">※ 각 페이지의 빈칸을 채우고, 보기에서 알맞은 말을 골라 쓰세요.</div>
+
+  <!-- 푸터 -->
+  <div class="page-footer">
+    <span>🎶 종묘제례악 활동지</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span>표지 &amp; 목차</span>
+      <div class="page-num">1</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 2 : 개념 + 주요 용어 + 등가·헌가 비교
+════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- ① 개념 -->
+  <div>
+    <div class="sec-title">① 종묘제례악이란 무엇인가요?</div>
+    <div class="def-box">
+      <strong>종묘제례악(宗廟祭禮樂)</strong>은 조선 시대
+      <span class="blank blank-lg"></span>의 신위를 모신
+      사당 <strong>종묘(宗廟)</strong>에서 제사를 지낼 때 연주하던
+      <span class="blank blank-md"></span>·<span class="blank blank-md"></span>·<span class="blank blank-md"></span>을 통칭합니다.
+    </div>
+  </div>
+
+  <!-- 3요소 카드 -->
+  <div class="elem-grid">
+    <div class="elem-card">
+      <span class="elem-icon">🎵</span>
+      <div class="elem-name"><span class="blank blank-md"></span></div>
+      <div class="elem-desc">제례 때 연주하는 음악</div>
+    </div>
+    <div class="elem-card">
+      <span class="elem-icon">🎤</span>
+      <div class="elem-name"><span class="blank blank-md"></span></div>
+      <div class="elem-desc">악장(樂章)을 노래로 부름</div>
+    </div>
+    <div class="elem-card">
+      <span class="elem-icon">💃</span>
+      <div class="elem-name"><span class="blank blank-md"></span></div>
+      <div class="elem-desc">마당에서 추는 의식 춤</div>
+    </div>
+  </div>
+
+  <div class="sec-sub">📌 보기 : <span class="chip">악(樂)</span><span class="chip">가(歌)</span><span class="chip">무(舞)</span><span class="chip">왕과 왕비</span></div>
+
+  <div class="divider"></div>
+
+  <!-- 주요 용어 -->
+  <div>
+    <div class="sec-title">주요 용어 채우기</div>
+    <div class="sec-sub">보기에서 알맞은 용어를 골라 빈칸에 쓰세요.</div>
+    <table class="term-table">
+      <thead><tr><th style="width:82px;">용어</th><th>뜻</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="term-key"><span class="blank" style="min-width:52px;"></span></td>
+          <td>정전 건물 <strong>댓돌(월대) 위</strong>에서 연주하는 악단. 악기 수가 적고 음색이 차분함.</td>
+        </tr>
+        <tr>
+          <td class="term-key"><span class="blank" style="min-width:52px;"></span></td>
+          <td>댓돌 <strong>아래 마당</strong>에서 연주하는 악단. 규모가 크고 웅장하며 화려함.</td>
+        </tr>
+        <tr>
+          <td class="term-key"><span class="blank" style="min-width:52px;"></span></td>
+          <td>마당 중앙에서 추는 <strong>의식 춤</strong>. 문무(文舞)와 무무(武舞)로 구성됨.</td>
+        </tr>
+        <tr>
+          <td class="term-key"><span class="blank" style="min-width:52px;"></span></td>
+          <td>역대 왕들의 <strong>문치와 덕</strong>을 찬양하는 음악. 초헌 절차에서 연주.</td>
+        </tr>
+        <tr>
+          <td class="term-key"><span class="blank" style="min-width:52px;"></span></td>
+          <td>역대 왕들의 <strong>무공과 업적</strong>을 찬양하는 음악. 아헌·종헌 절차에서 연주.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="sec-sub" style="margin-top:3px;">📌 보기 : <span class="chip">등가</span><span class="chip">헌가</span><span class="chip">일무</span><span class="chip">보태평</span><span class="chip">정대업</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ② 등가·헌가 비교 -->
+  <div>
+    <div class="sec-title">② 등가(登歌)와 헌가(軒架) 비교</div>
+    <div class="sec-sub">빈칸에 알맞은 말을 보기에서 골라 쓰세요.</div>
+    <div class="comp-wrap">
+      <div class="comp-head">
+        <div class="comp-head-cell">비교 항목</div>
+        <div class="comp-head-cell">🔵 등가</div>
+        <div class="comp-head-cell">🔴 헌가</div>
+      </div>
+      <div class="comp-row">
+        <div class="c-key">위치</div><div class="c-ans"></div><div class="c-ans"></div>
+      </div>
+      <div class="comp-row">
+        <div class="c-key">규모</div><div class="c-ans"></div><div class="c-ans"></div>
+      </div>
+      <div class="comp-row">
+        <div class="c-key">음색</div><div class="c-ans"></div><div class="c-ans"></div>
+      </div>
+      <div class="comp-row">
+        <div class="c-key">연주 시기</div><div class="c-ans"></div><div class="c-ans"></div>
+      </div>
+    </div>
+    <div class="sec-sub" style="margin-top:3px;">
+      📌 보기 :
+      <span class="chip">월대 위</span><span class="chip">월대 아래 마당</span>
+      <span class="chip">소규모·절제</span><span class="chip">대규모·화려</span>
+      <span class="chip">차분하고 맑음</span><span class="chip">웅장하고 힘참</span>
+      <span class="chip">전폐·초헌</span><span class="chip">영신·아헌·종헌·송신</span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>🎶 종묘제례악 활동지</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span>① 개념·용어 / ② 등가·헌가 비교</span>
+      <div class="page-num">2</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 3 : 역사 타임라인 + 제례 절차
+════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- ③ 역사 타임라인 -->
+  <div>
+    <div class="sec-title">③ 역사 타임라인</div>
+    <div class="sec-sub">빈칸에 알맞은 내용을 보기에서 골라 쓰세요.</div>
+    <table class="term-table">
+      <thead><tr><th style="width:66px;">연도</th><th>역사적 사건</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="term-key">고려</td>
+          <td>중국 <strong>송나라</strong> <span class="blank blank-md"></span> 도입 — 외래 음악 중심</td>
+        </tr>
+        <tr>
+          <td class="term-key">1418~</td>
+          <td><span class="blank blank-md"></span>, 우리 고유 선율 기반의 궁중음악 창제. 박연과 함께 악기·악보 정비</td>
+        </tr>
+        <tr>
+          <td class="term-key">1447</td>
+          <td><span class="blank blank-md"></span>·<span class="blank blank-md"></span> 창작 — 세종이 직접 작곡한 회례악</td>
+        </tr>
+        <tr>
+          <td class="term-key">1464</td>
+          <td><span class="blank blank-md"></span>, 보태평·정대업을 종묘제례악으로 확정. 지금의 체계 완성</td>
+        </tr>
+        <tr>
+          <td class="term-key">1493</td>
+          <td>성종 때 <span class="blank blank-lg"></span> 편찬 — 악기·악보·무용 체계 집대성</td>
+        </tr>
+        <tr>
+          <td class="term-key">1975</td>
+          <td><span class="blank blank-lg"></span> 지정 — 전통 보존 공식화</td>
+        </tr>
+        <tr>
+          <td class="term-key">2001</td>
+          <td><span class="blank blank-md"></span> 인류무형문화유산 등재 — 세계적 가치 인정</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="sec-sub" style="margin-top:3px;">
+      📌 보기 :
+      <span class="chip">아악(雅樂)</span><span class="chip">세종대왕</span>
+      <span class="chip">보태평</span><span class="chip">정대업</span><span class="chip">세조</span>
+      <span class="chip">악학궤범</span><span class="chip">국가무형문화재 제1호</span><span class="chip">UNESCO</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ④ 제례 절차 -->
+  <div>
+    <div class="sec-title">④ 제례 절차</div>
+    <div class="sec-sub">각 절차의 이름을 보기에서 골라 빈칸에 쓰세요.</div>
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="step-badge-sm">① 첫 번째 절차</div>
+        <div><span class="scene-blank"></span></div>
+        <div class="scene-body-sm">신을 <strong>맞이하는</strong> 절차. <strong>헌가</strong>에서 음악 연주 시작.</div>
+      </div>
+      <div class="story-card">
+        <div class="step-badge-sm">② 두 번째 절차</div>
+        <div><span class="scene-blank"></span></div>
+        <div class="scene-body-sm">폐백(비단)을 <strong>올리는</strong> 절차. <strong>등가</strong>에서 보태평 연주.</div>
+      </div>
+      <div class="story-card">
+        <div class="step-badge-sm">③ 세 번째 절차</div>
+        <div><span class="scene-blank"></span></div>
+        <div class="scene-body-sm"><strong>첫 번째 술잔</strong>을 올리는 절차. <strong>보태평</strong> 11곡 연주.</div>
+      </div>
+      <div class="story-card">
+        <div class="step-badge-sm">④ 네 번째 절차</div>
+        <div><span class="scene-blank"></span></div>
+        <div class="scene-body-sm"><strong>두 번째 술잔</strong>을 올리는 절차. <strong>정대업</strong> 연주 시작.</div>
+      </div>
+      <div class="story-card">
+        <div class="step-badge-sm">⑤ 다섯 번째 절차</div>
+        <div><span class="scene-blank"></span></div>
+        <div class="scene-body-sm"><strong>세 번째 술잔</strong>을 올리는 절차. <strong>정대업</strong> 계속 연주.</div>
+      </div>
+      <div class="story-card">
+        <div class="step-badge-sm">⑥ 마지막 절차</div>
+        <div><span class="scene-blank"></span></div>
+        <div class="scene-body-sm">신을 <strong>보내드리는</strong> 절차. <strong>헌가</strong>에서 마무리 음악.</div>
+      </div>
+    </div>
+    <div class="sec-sub" style="margin-top:3px;">
+      📌 보기 :
+      <span class="chip">영신(迎神)</span><span class="chip">전폐(奠幣)</span><span class="chip">초헌(初獻)</span>
+      <span class="chip">아헌(亞獻)</span><span class="chip">종헌(終獻)</span><span class="chip">송신(送神)</span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>🎶 종묘제례악 활동지</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span>③ 역사 타임라인 / ④ 제례 절차</span>
+      <div class="page-num">3</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 4 : 보태평·정대업 + 순서 배열
+════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- ⑤ 보태평·정대업 -->
+  <div>
+    <div class="sec-title">⑤ 보태평(保太平)과 정대업(定大業)</div>
+    <div class="sec-sub">빈칸에 알맞은 말을 채우고, 특징을 정리해 보세요.</div>
+    <div class="music-compare">
+      <div class="music-box">
+        <h3>보태평 保太平</h3>
+        <div class="mh">문덕(文德)을 기리는 음악</div>
+        <p>역대 왕들의 <strong>문치(文治)와</strong>
+          <span class="blank blank-md"></span>을 찬양.<br/>
+          <span class="blank blank-md"></span> 절차에서 연주됨.
+        </p>
+        <div class="track-row">
+          <span class="tr-chip">희문</span><span class="tr-chip">기명</span><span class="tr-chip">귀인</span>
+          <span class="tr-chip">형가</span><span class="tr-chip">즙수</span><span class="tr-chip">옹안</span>
+          <span class="tr-chip">역성</span><span class="tr-chip">납씨</span><span class="tr-chip">추유</span>
+          <span class="tr-chip">정세</span><span class="tr-chip">대유</span>
+          <span style="font-size:7.5pt;color:#888;align-self:center;">총 11곡</span>
+        </div>
+      </div>
+      <div class="music-box">
+        <h3>정대업 定大業</h3>
+        <div class="mh">무공(武功)을 기리는 음악</div>
+        <p>역대 왕들의 <strong>무공(武功)과</strong>
+          <span class="blank blank-md"></span>을 찬양.<br/>
+          <span class="blank blank-md"></span>·<span class="blank blank-md"></span> 절차에서 연주됨.
+        </p>
+        <div class="track-row">
+          <span class="tr-chip">소무</span><span class="tr-chip">독경</span><span class="tr-chip">탁정</span>
+          <span class="tr-chip">선위</span><span class="tr-chip">신정</span><span class="tr-chip">분웅</span>
+          <span class="tr-chip">순응</span><span class="tr-chip">총유</span><span class="tr-chip">정동</span>
+          <span class="tr-chip">평만</span><span class="tr-chip">영관</span>
+          <span style="font-size:7.5pt;color:#888;align-self:center;">총 11곡</span>
+        </div>
+      </div>
+    </div>
+    <div class="sec-sub" style="margin-top:3px;">
+      📌 보기 : <span class="chip">덕(德)</span><span class="chip">업적</span>
+      <span class="chip">초헌</span><span class="chip">아헌</span><span class="chip">종헌</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 순서 배열 -->
+  <div>
+    <div class="sec-title">제례 절차 순서 배열</div>
+    <div class="sec-sub">아래 절차를 올바른 순서대로 ( &nbsp; ) 안에 번호를 쓰세요.</div>
+    <table class="ord-table">
+      <thead>
+        <tr>
+          <th style="width:92px;text-align:center;">순서</th>
+          <th>절차 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ord-num-cell">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td>
+          <td>두 번째 술잔을 올리며 정대업 연주를 시작한다</td>
+        </tr>
+        <tr>
+          <td class="ord-num-cell">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td>
+          <td>신을 맞이하며 헌가에서 음악 연주를 시작한다</td>
+        </tr>
+        <tr>
+          <td class="ord-num-cell">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td>
+          <td>신을 보내드리며 헌가에서 마무리 음악을 연주한다</td>
+        </tr>
+        <tr>
+          <td class="ord-num-cell">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td>
+          <td>폐백을 올리며 등가에서 보태평을 연주한다</td>
+        </tr>
+        <tr>
+          <td class="ord-num-cell">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td>
+          <td>세 번째 술잔을 올리며 정대업을 계속 연주한다</td>
+        </tr>
+        <tr>
+          <td class="ord-num-cell">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</td>
+          <td>첫 번째 술잔을 올리며 보태평 11곡을 연주한다</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="sec-sub" style="margin-top:3px;">📌 정답은 ① ~ ⑥ 중 알맞은 숫자를 쓰세요.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>🎶 종묘제례악 활동지</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span>⑤ 보태평·정대업 / 절차 순서 배열</span>
+      <div class="page-num">4</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE 5 : 악기 + 감상 + 논술
+════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- ⑥ 악기 -->
+  <div>
+    <div class="sec-title">⑥ 악기 이름 맞히기</div>
+    <div class="sec-sub">설명을 읽고 악기 이름을 보기에서 골라 쓰세요.</div>
+    <div class="instr-grid">
+      <div class="instr-card">
+        <span class="instr-badge-sm">등가 전용 · 찰현악기</span>
+        <div><span class="instr-blank-name"></span></div>
+        <div class="instr-desc-sm"><strong>말총 활로 켜는</strong> 7현 현악기. 낮고 깊은 음색.</div>
+        <div class="bogi-chips"><span class="chip">아쟁</span><span class="chip">절고</span><span class="chip">해금</span></div>
+      </div>
+      <div class="instr-card">
+        <span class="instr-badge-sm">등가 전용 · 타악기</span>
+        <div><span class="instr-blank-name"></span></div>
+        <div class="instr-desc-sm">등가에서 <strong>박자를 조절</strong>하는 작은 북.</div>
+        <div class="bogi-chips"><span class="chip">절고</span><span class="chip">진고</span><span class="chip">장구</span></div>
+      </div>
+      <div class="instr-card">
+        <span class="instr-badge-sm">헌가 전용 · 관악기</span>
+        <div><span class="instr-blank-name"></span></div>
+        <div class="instr-desc-sm">끝이 퍼진 <strong>더블 리드</strong> 관악기. 헌가의 웅장함.</div>
+        <div class="bogi-chips"><span class="chip">태평소</span><span class="chip">당피리</span><span class="chip">대금</span></div>
+      </div>
+      <div class="instr-card">
+        <span class="instr-badge-sm">헌가 전용 · 타악기</span>
+        <div><span class="instr-blank-name"></span></div>
+        <div class="instr-desc-sm">헌가에서 쓰는 <strong>큰 북</strong>. 장중한 소리.</div>
+        <div class="bogi-chips"><span class="chip">진고</span><span class="chip">절고</span><span class="chip">장구</span></div>
+      </div>
+      <div class="instr-card">
+        <span class="instr-badge-sm">공통 · 금속 타악기</span>
+        <div><span class="instr-blank-name"></span></div>
+        <div class="instr-desc-sm"><strong>16개 청동 종</strong>을 매달아 두드리는 선율 타악기.</div>
+        <div class="bogi-chips"><span class="chip">편종</span><span class="chip">편경</span><span class="chip">방향</span></div>
+      </div>
+      <div class="instr-card">
+        <span class="instr-badge-sm">공통 · 찰현악기</span>
+        <div><span class="instr-blank-name"></span></div>
+        <div class="instr-desc-sm"><strong>두 줄</strong>을 말총 활로 켜는 현악기.</div>
+        <div class="bogi-chips"><span class="chip">해금</span><span class="chip">아쟁</span><span class="chip">가야금</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ⑦ 감상 -->
+  <div>
+    <div class="sec-title">⑦ 음악 감상 — 느낌 써보기</div>
+    <div class="sec-sub">보태평, 정대업, 일무를 감상하고 각각 느낀 점을 쓰세요.</div>
+    <div class="feel-grid">
+      <div class="feel-card">
+        <div class="feel-badge">감상 ①</div>
+        <div class="feel-icon">🎵</div>
+        <div class="feel-title">보태평 保太平</div>
+        <div class="feel-desc"><strong>문치와 덕</strong>을 찬양. 초헌 연주.</div>
+        <div class="feel-q">Q. 듣고 떠오르는 느낌은?</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:4px;">
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+      </div>
+      <div class="feel-card">
+        <div class="feel-badge">감상 ②</div>
+        <div class="feel-icon">⚔️</div>
+        <div class="feel-title">정대업 定大業</div>
+        <div class="feel-desc"><strong>무공과 업적</strong>을 찬양. 아헌·종헌 연주.</div>
+        <div class="feel-q">Q. 듣고 떠오르는 느낌은?</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:4px;">
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+      </div>
+      <div class="feel-card">
+        <div class="feel-badge">감상 ③</div>
+        <div class="feel-icon">💃</div>
+        <div class="feel-title">일무 佾舞</div>
+        <div class="feel-desc"><strong>의식 춤</strong>. 문무·무무 구성.</div>
+        <div class="feel-q">Q. 춤 동작에서 느낀 점은?</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:4px;">
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ⑧ 논술 -->
+  <div>
+    <div class="sec-title">⑧ 생각 넓히기</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div class="essay-box">
+        <div class="essay-q">
+          <em>Q1</em>&nbsp; 종묘제례악이 UNESCO 인류무형문화유산으로 등재된 이유는 무엇일까요?
+        </div>
+        <div class="wblock">
+          <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+        </div>
+      </div>
+      <div class="essay-box">
+        <div class="essay-q">
+          <em>Q2</em>&nbsp; 종묘제례악이 <em>오늘날 우리에게</em> 주는 의미와 지켜야 하는 이유를 써 보세요.
+        </div>
+        <div class="wblock">
+          <div class="wl"></div><div class="wl"></div><div class="wl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>🎶 종묘제례악 활동지</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span>⑥ 악기 맞히기 / ⑦ 감상 / ⑧ 생각 넓히기</span>
+      <div class="page-num">5</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
