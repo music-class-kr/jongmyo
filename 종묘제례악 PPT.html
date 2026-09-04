@@ -565,9 +565,9 @@ html,body{width:100%;height:100%;overflow:hidden;
   overflow:hidden;padding:4px;
 }
 .piece-flyer.waiting{pointer-events:auto;cursor:pointer;animation:flyerPulse 1.1s ease-in-out infinite;}
-.piece-flyer img{width:82%;height:62%;object-fit:contain;flex-shrink:0;}
-.piece-flyer span{font-size:1.14rem;font-weight:800;color:#2A2016;margin-top:2px;}
-.piece-flyer em{font-style:normal;font-size:0.79rem;color:#8A7458;margin-top:2px;}
+.piece-flyer img{width:94%;height:84%;object-fit:contain;flex-shrink:0;}
+.piece-flyer span{font-size:1.14rem;font-weight:800;color:#2A2016;margin-top:1px;}
+.piece-flyer em{font-style:normal;font-size:0.72rem;color:#8A7458;margin-top:0;}
 @keyframes flyerPulse{
   0%,100%{box-shadow:0 16px 46px rgba(0,0,0,.45),0 0 0 0 rgba(240,210,138,.5);}
   50%{box-shadow:0 16px 46px rgba(0,0,0,.45),0 0 0 10px rgba(240,210,138,0);}
@@ -1403,8 +1403,8 @@ function popupThenPlace(piece, dz){
     flyer.style.transition = 'left .4s cubic-bezier(.34,1.56,.64,1), top .4s cubic-bezier(.34,1.56,.64,1), width .4s, height .4s';
     flyer.style.left = '50%';
     flyer.style.top  = '50%';
-    flyer.style.width  = '260px';
-    flyer.style.height = '300px';
+    flyer.style.width  = '300px';
+    flyer.style.height = '340px';
     setTimeout(()=>flyer.classList.add('waiting'), 420);
   });
 
