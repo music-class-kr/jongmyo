@@ -7,11 +7,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --gold:#C9A84C;--gold2:#E8C96A;--crimson:#8B0000;--crimson2:#B22222;
-  --dark:#0D0A06;--cream:#FFF8E7;--muted:#B8A88A;
-  --card:#1e1608;--border:rgba(201,168,76,.25);
+  --gold:#E3C88A;--gold2:#F3DFAF;--crimson:#E8A0A8;--crimson2:#EDB6BC;
+  --dark:#221B17;--cream:#FFF8E7;--muted:#D8CBB0;
+  --card:#2A2016;--border:rgba(227,200,138,.25);
   --deungga:#1e3a5f;--heunga:#5f1e1e;--both:#1a5f2a;
-  --correct:#2d7a3d;--wrong:#c0392b;
+  --correct:#4F9A63;--wrong:#E0847B;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;height:100%;overflow:hidden;
@@ -28,14 +28,14 @@ html,body{width:100%;height:100%;overflow:hidden;
 /* ── 상단 바로가기 바 ── */
 #quicknav{position:absolute;top:0;left:0;right:0;height:40px;
   display:flex;align-items:center;gap:4px;padding:0 14px;
-  background:linear-gradient(90deg,#1a1208,#2d1f0a);
+  background:linear-gradient(90deg,#2B2119,#3E2E1C);
   border-bottom:2px solid var(--gold);z-index:150;overflow-x:auto;}
 .qn-btn{flex:1;min-width:0;padding:6px 4px;border-radius:14px;
-  border:1.5px solid rgba(201,168,76,.35);background:transparent;
-  color:#c8b890;font-family:'Noto Sans KR',sans-serif;
-  font-size:.66rem;font-weight:600;cursor:pointer;transition:all .2s;
+  border:1.5px solid rgba(227,200,138,.35);background:transparent;
+  color:#EAD9B0;font-family:'Noto Sans KR',sans-serif;
+  font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
-.qn-btn:hover{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold);}
+.qn-btn:hover{background:rgba(227,200,138,.15);border-color:var(--gold);color:var(--gold);}
 .qn-btn.active{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:800;}
 
 /* ── 슬라이더 ── */
@@ -49,7 +49,7 @@ html,body{width:100%;height:100%;overflow:hidden;
 .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);
   z-index:9999;width:44px;height:44px;border-radius:50%;
   background:rgba(13,10,6,.85);border:2px solid var(--gold);
-  color:var(--gold);font-size:1.3rem;cursor:pointer;
+  color:var(--gold);font-size:1.53rem;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   transition:all .2s;backdrop-filter:blur(6px);}
 .nav-arrow:hover{background:var(--gold);color:var(--dark);}
@@ -62,17 +62,17 @@ html,body{width:100%;height:100%;overflow:hidden;
   transform:translateX(-50%);z-index:9999;
   display:flex;gap:6px;align-items:center;}
 .dot{width:8px;height:8px;border-radius:50%;
-  background:rgba(201,168,76,.25);border:1.5px solid var(--gold);
+  background:rgba(227,200,138,.25);border:1.5px solid var(--gold);
   cursor:pointer;transition:all .25s;}
 .dot.on{background:var(--gold);transform:scale(1.35);}
 
 /* ══ 슬라이드 1: 표지 ══ */
-#s1{background:linear-gradient(160deg,#0D0A06 0%,#1a1208 50%,#2d1f0a 100%);}
+#s1{background:linear-gradient(160deg,#221B17 0%,#2B2119 50%,#3E2E1C 100%);}
 .cover-wrap{position:absolute;inset:0;display:flex;
   align-items:center;justify-content:center;}
 .cover-bg{position:absolute;inset:0;
   background:radial-gradient(ellipse at center,
-  rgba(201,168,76,.1) 0%,transparent 70%);}
+  rgba(227,200,138,.1) 0%,transparent 70%);}
 .cover-content{position:relative;z-index:1;
   display:flex;flex-direction:column;
   align-items:center;gap:20px;padding:40px;text-align:center;}
@@ -81,48 +81,48 @@ html,body{width:100%;height:100%;overflow:hidden;
   border:3px solid var(--gold);
   box-shadow:0 12px 50px rgba(0,0,0,.7);}
 .cover-title{font-family:'Noto Serif KR',serif;
-  font-size:3.5rem;font-weight:900;
+  font-size:4.13rem;font-weight:900;
   color:var(--gold);letter-spacing:.15em;
-  text-shadow:0 2px 20px rgba(201,168,76,.5);}
-.cover-sub{font-size:1.3rem;
-  color:#c8b890;letter-spacing:.1em;}
+  text-shadow:0 2px 20px rgba(227,200,138,.5);}
+.cover-sub{font-size:1.53rem;
+  color:#EAD9B0;letter-spacing:.1em;}
 .cover-badge{padding:7px 26px;border:2px solid var(--gold);
-  border-radius:30px;font-size:.9rem;color:var(--gold);
-  background:rgba(201,168,76,.1);letter-spacing:.08em;}
-.cover-hint{font-size:.8rem;color:#6a5a3a;margin-top:6px;}
+  border-radius:30px;font-size:1.06rem;color:var(--gold);
+  background:rgba(227,200,138,.1);letter-spacing:.08em;}
+.cover-hint{font-size:0.94rem;color:#9C8B6A;margin-top:6px;}
 
 /* ══ 공통 슬라이드 헤더 ══ */
 .slide-header{flex-shrink:0;
-  background:linear-gradient(90deg,#1a1208,#2d1f0a);
+  background:linear-gradient(90deg,#2B2119,#3E2E1C);
   border-bottom:3px solid var(--gold);
   padding:16px 32px;display:flex;align-items:center;gap:14px;
   z-index:10;}
 .slide-header h2{font-family:'Noto Serif KR',serif;
-  font-size:1.8rem;
+  font-size:2.12rem;
   font-weight:900;color:var(--gold);}
 .slide-header .snum{margin-left:auto;
-  font-size:.8rem;color:var(--muted);}
+  font-size:0.94rem;color:var(--muted);}
 
 /* ══ 슬라이드 2: 목차 ══ */
-#s2{background:linear-gradient(135deg,#0D0A06,#1a1208);}
+#s2{background:linear-gradient(135deg,#221B17,#2B2119);}
 .toc-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
 .toc-body{flex:1;display:grid;grid-template-columns:1fr 1fr;
   gap:16px;padding:28px 40px;overflow:hidden;}
 .toc-item{display:flex;align-items:center;gap:16px;
-  background:rgba(201,168,76,.06);
-  border:1.5px solid rgba(201,168,76,.2);
+  background:rgba(227,200,138,.06);
+  border:1.5px solid rgba(227,200,138,.2);
   border-radius:12px;padding:16px 22px;
   cursor:pointer;transition:all .25s;}
-.toc-item:hover{background:rgba(201,168,76,.14);
+.toc-item:hover{background:rgba(227,200,138,.14);
   border-color:var(--gold);transform:translateX(6px);}
 .toc-num{font-family:'Noto Serif KR',serif;
-  font-size:1.6rem;font-weight:900;
+  font-size:1.89rem;font-weight:900;
   color:var(--gold);opacity:.6;min-width:36px;}
-.toc-text{font-size:1.05rem;font-weight:500;color:var(--cream);}
-.toc-sub{font-size:.78rem;color:var(--muted);margin-top:3px;}
+.toc-text{font-size:1.24rem;font-weight:500;color:var(--cream);}
+.toc-sub{font-size:0.92rem;color:var(--muted);margin-top:3px;}
 
 /* ══ 정보 슬라이드 공통 ══ */
-.info-slide{background:linear-gradient(135deg,#0D0A06,#1a1208);}
+.info-slide{background:linear-gradient(135deg,#221B17,#2B2119);}
 .info-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
 .info-body{flex:1;display:grid;overflow:hidden;}
 .info-body.two-col{grid-template-columns:1fr 1fr;}
@@ -133,35 +133,50 @@ html,body{width:100%;height:100%;overflow:hidden;
   background:rgba(0,0,0,.2);overflow:hidden;}
 .info-img{max-width:100%;max-height:100%;
   object-fit:contain;border-radius:12px;
-  border:2px solid rgba(201,168,76,.35);
+  border:2px solid rgba(227,200,138,.35);
   box-shadow:0 10px 40px rgba(0,0,0,.6);}
 .info-text-area{padding:32px 36px;
   display:flex;flex-direction:column;
   justify-content:center;gap:18px;overflow-y:auto;}
 .info-label{display:inline-block;padding:4px 16px;
-  border-radius:16px;font-size:.78rem;font-weight:700;
-  background:rgba(201,168,76,.15);
+  border-radius:16px;font-size:0.92rem;font-weight:700;
+  background:rgba(227,200,138,.15);
   border:1.5px solid var(--gold);
   color:var(--gold);align-self:flex-start;}
 .info-title{font-family:'Noto Serif KR',serif;
-  font-size:2.2rem;
+  font-size:2.6rem;
   font-weight:900;color:var(--gold);}
-.info-hanja{font-size:1rem;color:var(--muted);margin-top:-12px;}
-.info-desc{font-size:1.1rem;
-  line-height:2.1;color:#e8e0d0;}
+.info-hanja{font-size:1.18rem;color:var(--muted);margin-top:-12px;}
+.info-desc{font-size:1.3rem;
+  line-height:2.1;color:#F3ECDD;}
 .info-desc strong{color:var(--gold2);font-weight:700;}
-.info-desc em{color:#a8d8f0;font-style:normal;font-weight:600;}
+.info-desc em{color:#BFE3F5;font-style:normal;font-weight:600;}
 .info-tags{display:flex;flex-wrap:wrap;gap:8px;}
-.tag{padding:4px 14px;border-radius:14px;font-size:.78rem;
-  background:rgba(201,168,76,.1);
-  border:1px solid rgba(201,168,76,.3);color:#c8b890;}
+.tag{padding:4px 14px;border-radius:14px;font-size:0.92rem;
+  background:rgba(227,200,138,.1);
+  border:1px solid rgba(227,200,138,.3);color:#EAD9B0;}
+
+/* 빈칸 — 클릭하면 정답 표시 (활동지 연동) */
+.blank-term{
+  display:inline-block;cursor:pointer;
+  border-bottom:2.5px solid var(--gold2);
+  border-radius:4px;padding:0 6px;margin:0 1px;
+  background:rgba(227,200,138,.16);
+  transition:background .2s;
+}
+.blank-term:hover{background:rgba(227,200,138,.3);}
+.blank-term:not(.revealed){color:transparent;}
+.blank-term.revealed{
+  color:var(--gold2);font-weight:800;
+  background:rgba(227,200,138,.05);
+}
 
 /* 타임라인 */
 .timeline{display:flex;flex-direction:column;gap:14px;}
 .tl-item{display:flex;gap:16px;align-items:flex-start;}
 .tl-year{flex-shrink:0;width:76px;text-align:right;
   font-family:'Noto Serif KR',serif;
-  font-size:.92rem;font-weight:700;
+  font-size:1.09rem;font-weight:700;
   color:var(--gold);padding-top:2px;}
 .tl-dot{flex-shrink:0;width:12px;height:12px;
   border-radius:50%;background:var(--gold);
@@ -169,84 +184,84 @@ html,body{width:100%;height:100%;overflow:hidden;
 .tl-dot::after{content:'';position:absolute;
   left:50%;top:100%;transform:translateX(-50%);
   width:2px;height:calc(100% + 10px);
-  background:rgba(201,168,76,.3);}
+  background:rgba(227,200,138,.3);}
 .tl-item:last-child .tl-dot::after{display:none;}
-.tl-text{font-size:.92rem;line-height:1.8;color:#e8e0d0;}
+.tl-text{font-size:1.09rem;line-height:1.8;color:#F3ECDD;}
 .tl-text strong{color:var(--gold2);}
 
 /* 보태평/정대업 카드 */
 .music-cards{display:grid;grid-template-columns:1fr 1fr;
   gap:20px;height:100%;}
-.music-card{background:rgba(201,168,76,.06);
-  border:1.5px solid rgba(201,168,76,.25);
+.music-card{background:rgba(227,200,138,.06);
+  border:1.5px solid rgba(227,200,138,.25);
   border-radius:14px;padding:24px;
   display:flex;flex-direction:column;gap:12px;}
 .music-card h3{font-family:'Noto Serif KR',serif;
-  font-size:1.3rem;font-weight:900;color:var(--gold);}
-.music-card .hanja{font-size:.85rem;color:var(--muted);}
-.music-card p{font-size:.9rem;line-height:1.9;color:#e8e0d0;}
+  font-size:1.53rem;font-weight:900;color:var(--gold);}
+.music-card .hanja{font-size:1rem;color:var(--muted);}
+.music-card p{font-size:1.06rem;line-height:1.9;color:#F3ECDD;}
 .music-card p strong{color:var(--gold2);}
 .music-card .tracks{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
-.track-tag{padding:3px 10px;border-radius:10px;font-size:.68rem;
-  background:rgba(201,168,76,.12);
-  border:1px solid rgba(201,168,76,.25);color:#c8b890;}
+.track-tag{padding:3px 10px;border-radius:10px;font-size:0.8rem;
+  background:rgba(227,200,138,.12);
+  border:1px solid rgba(227,200,138,.25);color:#EAD9B0;}
 
 /* 등가/헌가 이미지 오버레이 */
 .jongmyo-img-wrap{position:relative;width:100%;height:100%;overflow:hidden;}
 .jongmyo-img-wrap img{width:100%;height:100%;object-fit:cover;}
 .zone-overlay{position:absolute;padding:7px 16px;
-  border-radius:20px;font-size:.82rem;font-weight:700;
+  border-radius:20px;font-size:0.97rem;font-weight:700;
   backdrop-filter:blur(4px);}
 .zone-deungga{top:20%;left:36%;
-  background:rgba(30,58,95,.92);color:#a8c8f0;
-  border:2px solid #5a8abf;}
+  background:rgba(30,58,95,.92);color:#C7DFF7;
+  border:2px solid #8FBEE3;}
 .zone-heunga{bottom:26%;left:18%;
-  background:rgba(95,30,30,.92);color:#f0a8a8;
-  border:2px solid #bf5a5a;}
+  background:rgba(95,30,30,.92);color:#F5CDD0;
+  border:2px solid #E3A0A5;}
 .zone-ilmu{bottom:36%;left:33%;
-  background:rgba(26,95,42,.92);color:#a8f0c0;
-  border:2px solid #5abf80;}
+  background:rgba(26,95,42,.92);color:#C9F2D9;
+  border:2px solid #8FDBAA;}
 
 /* 제례절차 */
 .procedure-grid{display:grid;
   grid-template-columns:repeat(3,1fr);gap:14px;
   padding:24px 32px;}
-.proc-card{background:rgba(201,168,76,.06);
-  border:1.5px solid rgba(201,168,76,.2);
+.proc-card{background:rgba(227,200,138,.06);
+  border:1.5px solid rgba(227,200,138,.2);
   border-radius:12px;padding:18px;
   display:flex;flex-direction:column;gap:8px;transition:all .25s;}
-.proc-card:hover{background:rgba(201,168,76,.12);border-color:var(--gold);}
+.proc-card:hover{background:rgba(227,200,138,.12);border-color:var(--gold);}
 .proc-num{font-family:'Noto Serif KR',serif;
-  font-size:1.4rem;font-weight:900;color:var(--gold);opacity:.7;}
-.proc-title{font-size:1rem;font-weight:700;color:var(--gold2);}
-.proc-desc{font-size:.85rem;line-height:1.8;color:#e0d8c8;}
+  font-size:1.65rem;font-weight:900;color:var(--gold);opacity:.7;}
+.proc-title{font-size:1.18rem;font-weight:700;color:var(--gold2);}
+.proc-desc{font-size:1rem;line-height:1.8;color:#EDE6D8;}
 
 /* ══ 갤러리 슬라이드 ══ */
-#s8{background:linear-gradient(135deg,#0D0A06,#1a1208);}
+#s8{background:linear-gradient(135deg,#221B17,#2B2119);}
 .gallery-wrap{position:absolute;inset:0;display:flex;flex-direction:column;}
-.gallery-body{flex:1;overflow-y:auto;padding:16px 28px 40px;
+.gallery-body{flex:1;overflow-y:auto;padding:12px 28px 52px;
   display:grid;grid-template-columns:repeat(5,1fr);
   gap:12px;align-content:start;}
-.gallery-card{background:rgba(201,168,76,.07);
-  border:1.5px solid rgba(201,168,76,.2);
+.gallery-card{background:rgba(227,200,138,.07);
+  border:1.5px solid rgba(227,200,138,.2);
   border-radius:12px;padding:14px;
   display:flex;flex-direction:column;
   align-items:center;gap:8px;
   cursor:pointer;transition:all .25s;}
-.gallery-card:hover{background:rgba(201,168,76,.16);
+.gallery-card:hover{background:rgba(227,200,138,.16);
   border-color:var(--gold);transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(201,168,76,.2);}
+  box-shadow:0 8px 24px rgba(227,200,138,.2);}
 .gallery-card img{width:100%;height:90px;
   object-fit:contain;border-radius:8px;
-  border:1px solid rgba(201,168,76,.25);}
+  border:1px solid rgba(227,200,138,.25);}
 .gallery-card .gc-name{font-family:'Noto Serif KR',serif;
-  font-size:.95rem;font-weight:700;color:var(--gold);}
+  font-size:1.12rem;font-weight:700;color:var(--gold);}
 .gallery-card .gc-badge{padding:2px 10px;border-radius:10px;
-  font-size:.62rem;font-weight:600;}
-.badge-dg{background:rgba(30,58,95,.8);color:#a8c8f0;}
-.badge-hg{background:rgba(95,30,30,.8);color:#f0a8a8;}
-.badge-both{background:rgba(26,95,42,.8);color:#a8f0c0;}
-.gallery-card .gc-hint{font-size:.65rem;color:#6a5a3a;}
+  font-size:0.73rem;font-weight:600;}
+.badge-dg{background:rgba(30,58,95,.8);color:#C7DFF7;}
+.badge-hg{background:rgba(95,30,30,.8);color:#F5CDD0;}
+.badge-both{background:rgba(26,95,42,.8);color:#C9F2D9;}
+.gallery-card .gc-hint{font-size:0.77rem;color:#9C8B6A;}
 
 /* ══ 팝업 모달 ══ */
 #modal-overlay{position:absolute;inset:0;
@@ -254,23 +269,23 @@ html,body{width:100%;height:100%;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;transition:opacity .3s;}
 #modal-overlay.show{opacity:1;pointer-events:all;}
-#modal-box{background:linear-gradient(135deg,#1a1208,#2d1f0a);
+#modal-box{background:linear-gradient(135deg,#2B2119,#3E2E1C);
   border:2px solid var(--gold);border-radius:16px;
   width:min(700px,90%);max-height:85%;
   display:flex;flex-direction:column;
   transform:scale(.85) translateY(30px);
   transition:transform .35s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
 #modal-overlay.show #modal-box{transform:scale(1) translateY(0);}
-#modal-header{background:linear-gradient(90deg,#1a1208,#2d1f0a);
+#modal-header{background:linear-gradient(90deg,#2B2119,#3E2E1C);
   border-bottom:2px solid var(--gold);
   padding:14px 22px;display:flex;
   align-items:center;gap:14px;flex-shrink:0;}
 #modal-header h3{font-family:'Noto Serif KR',serif;
-  font-size:1.4rem;font-weight:900;color:var(--gold);}
+  font-size:1.65rem;font-weight:900;color:var(--gold);}
 #modal-close{margin-left:auto;width:32px;height:32px;
   border-radius:50%;border:1.5px solid var(--gold);
   background:transparent;color:var(--gold);
-  font-size:1rem;cursor:pointer;
+  font-size:1.18rem;cursor:pointer;
   display:flex;align-items:center;justify-content:center;transition:all .2s;}
 #modal-close:hover{background:var(--gold);color:var(--dark);}
 #modal-body{flex:1;overflow-y:auto;
@@ -279,32 +294,32 @@ html,body{width:100%;height:100%;overflow:hidden;
   justify-content:center;padding:28px;background:rgba(0,0,0,.2);}
 #modal-img{width:100%;max-height:280px;
   object-fit:contain;border-radius:10px;
-  border:2px solid rgba(201,168,76,.4);}
+  border:2px solid rgba(227,200,138,.4);}
 #modal-text-area{padding:24px;
   display:flex;flex-direction:column;gap:14px;}
 #modal-zone-badge{padding:4px 14px;border-radius:16px;
-  font-size:.76rem;font-weight:700;align-self:flex-start;}
+  font-size:0.9rem;font-weight:700;align-self:flex-start;}
 #modal-name{font-family:'Noto Serif KR',serif;
-  font-size:1.8rem;font-weight:900;color:var(--gold);}
-#modal-hanja{font-size:.9rem;color:var(--muted);}
-#modal-desc{font-size:.95rem;line-height:2;color:#e8e0d0;}
+  font-size:2.12rem;font-weight:900;color:var(--gold);}
+#modal-hanja{font-size:1.06rem;color:var(--muted);}
+#modal-desc{font-size:1.12rem;line-height:2;color:#F3ECDD;}
 #modal-desc strong{color:var(--gold2);font-weight:700;}
 #modal-tags{display:flex;flex-wrap:wrap;gap:6px;}
 #modal-yt-btn{display:inline-flex;align-items:center;gap:8px;
   padding:10px 22px;border-radius:24px;
-  background:rgba(180,0,0,.9);border:none;
+  background:rgba(224,148,140,.9);border:none;
   color:#fff;font-family:'Noto Sans KR',sans-serif;
-  font-size:.85rem;font-weight:500;cursor:pointer;
+  font-size:1rem;font-weight:500;cursor:pointer;
   transition:all .2s;text-decoration:none;align-self:flex-start;}
-#modal-yt-btn:hover{background:#e00;transform:translateY(-2px);
-  box-shadow:0 4px 16px rgba(180,0,0,.4);}
+#modal-yt-btn:hover{background:#E8938C;transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(224,148,140,.4);}
 
 /* ══ s9 새 배치활동 추가 CSS ══ */
 #board-title{
   font-family:'Noto Serif KR',serif;
-  font-size:.95rem;font-weight:900;
+  font-size:1.12rem;font-weight:900;
   color:var(--gold);
-  background:linear-gradient(135deg,#1a1208,#2d1f0a);
+  background:linear-gradient(135deg,#2B2119,#3E2E1C);
   border:2px solid var(--gold);
   border-radius:8px;padding:4px 22px;
   letter-spacing:.1em;text-align:center;flex-shrink:0;
@@ -322,9 +337,9 @@ html,body{width:100%;height:100%;overflow:hidden;
 }
 #board{
   position:relative;width:100%;flex:1;min-height:0;
-  border:2px solid #8a7a5a;border-radius:6px;
+  border:2px solid #B0A183;border-radius:6px;
   box-shadow:0 8px 32px rgba(0,0,0,.5);
-  overflow:hidden;background:#e8dfc8;
+  overflow:hidden;background:#F0E9D6;
   display:flex;flex-direction:column;
   justify-content:space-around;padding:6px 8px;
 }
@@ -332,23 +347,14 @@ html,body{width:100%;height:100%;overflow:hidden;
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:fill;pointer-events:none;z-index:0;opacity:.3;
 }
-.zone-section{
-  position:relative;z-index:3;
-  display:flex;flex-direction:column;
-  align-items:center;gap:3px;flex:1;justify-content:center;
-}
 .zone-divider{
-  width:90%;height:2px;flex-shrink:0;
-  background:linear-gradient(90deg,transparent,rgba(200,169,110,.5),transparent);
+  position:absolute;left:5%;right:5%;top:60.5%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(227,200,138,.5),transparent);
+  z-index:2;
 }
-.dz-row{
-  display:flex;gap:4px;
-  justify-content:center;align-items:center;
-  flex-wrap:nowrap;flex-shrink:0;
-}
-.side-hint{font-size:.58rem;color:#b8a882;text-align:center;flex-shrink:0;line-height:1.4;}
+.side-hint{font-size:0.68rem;color:#D8CBB0;text-align:center;flex-shrink:0;line-height:1.4;}
 #legend{display:flex;gap:4px;justify-content:center;flex-shrink:0;flex-wrap:wrap;padding:1px 0;}
-.leg-item{display:flex;align-items:center;gap:3px;font-size:.57rem;color:#b8a882;}
+.leg-item{display:flex;align-items:center;gap:3px;font-size:0.67rem;color:#D8CBB0;}
 .leg-dot{width:7px;height:7px;border-radius:50%;}
 #pieces-wrap{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -367,12 +373,12 @@ html,body{width:100%;height:100%;overflow:hidden;
 .piece.dragging{opacity:.25;transform:scale(.88);}
 .piece.used{opacity:.2;pointer-events:none;filter:grayscale(1);}
 .piece img{width:75%;height:67%;object-fit:contain;pointer-events:none;flex-shrink:0;}
-.piece .pname{font-size:.55rem;font-weight:700;text-align:center;line-height:1;margin-top:2px;pointer-events:none;}
-.piece.deungga{border-color:#5a8abf;background:linear-gradient(135deg,#e8f0fa,#d0e4f5);}
+.piece .pname{font-size:0.65rem;font-weight:700;text-align:center;line-height:1;margin-top:2px;pointer-events:none;}
+.piece.deungga{border-color:#8FBEE3;background:linear-gradient(135deg,#e8f0fa,#d0e4f5);}
 .piece.deungga .pname{color:#1e3a5f;}
-.piece.heunga{border-color:#bf5a5a;background:linear-gradient(135deg,#fae8e8,#f5d0d0);}
+.piece.heunga{border-color:#E3A0A5;background:linear-gradient(135deg,#fae8e8,#f5d0d0);}
 .piece.heunga .pname{color:#5f1e1e;}
-.piece.both{border-color:#5abf80;background:linear-gradient(135deg,#e8faf0,#d0f5e4);}
+.piece.both{border-color:#8FDBAA;background:linear-gradient(135deg,#e8faf0,#d0f5e4);}
 .piece.both .pname{color:#1e5f3a;}
 .piece.hidden-filter{display:none !important;}
 .dz-placed-img{width:88%;height:82%;object-fit:contain;pointer-events:none;}
@@ -397,11 +403,11 @@ html,body{width:100%;height:100%;overflow:hidden;
 /* ══ 슬라이드 9 레이아웃 ══ */
 #s9{
   display:flex;flex-direction:column;
-  overflow:hidden;background:#1a1208;
+  overflow:hidden;background:#2B2119;
 }
 #act-header{
   flex-shrink:0;
-  background:linear-gradient(135deg,#1a1208,#2d1f0a);
+  background:linear-gradient(135deg,#2B2119,#3E2E1C);
   border-bottom:3px solid var(--gold);
   padding:8px 20px;
   display:flex;align-items:center;justify-content:space-between;
@@ -409,14 +415,14 @@ html,body{width:100%;height:100%;overflow:hidden;
 }
 .hdr-right{display:flex;gap:8px;align-items:center;}
 #score-box{
-  background:rgba(200,169,110,.15);border:1.5px solid var(--gold);
+  background:rgba(227,200,138,.15);border:1.5px solid var(--gold);
   border-radius:20px;padding:3px 14px;
-  font-size:.82rem;font-weight:700;color:var(--gold);
+  font-size:0.97rem;font-weight:700;color:var(--gold);
 }
 .ctrl-btn{
   padding:5px 14px;border-radius:20px;
   border:1.5px solid var(--gold);background:transparent;
-  color:var(--gold);font-size:.75rem;
+  color:var(--gold);font-size:0.89rem;
   font-family:'Noto Sans KR',sans-serif;
   cursor:pointer;transition:all .2s;
 }
@@ -424,52 +430,55 @@ html,body{width:100%;height:100%;overflow:hidden;
 #filter-bar{
   flex-shrink:0;background:rgba(13,10,6,.97);
   padding:5px 16px;display:flex;gap:7px;align-items:center;
-  border-bottom:1px solid rgba(200,169,110,.2);
+  border-bottom:1px solid rgba(227,200,138,.2);
 }
 .filter-btn{
   padding:3px 12px;border-radius:16px;border:1.5px solid;
-  font-size:.68rem;font-family:'Noto Sans KR',sans-serif;
+  font-size:0.8rem;font-family:'Noto Sans KR',sans-serif;
   cursor:pointer;transition:all .2s;background:transparent;
 }
 .filter-btn.all-btn{border-color:var(--gold);color:var(--gold);}
 .filter-btn.all-btn.active,.filter-btn.all-btn:hover{background:var(--gold);color:var(--dark);}
-.filter-btn.deungga-btn{border-color:#5a8abf;color:#5a8abf;}
-.filter-btn.deungga-btn.active,.filter-btn.deungga-btn:hover{background:#5a8abf;color:#fff;}
-.filter-btn.heunga-btn{border-color:#bf5a5a;color:#bf5a5a;}
-.filter-btn.heunga-btn.active,.filter-btn.heunga-btn:hover{background:#bf5a5a;color:#fff;}
-.filter-btn.both-btn{border-color:#5abf80;color:#5abf80;}
-.filter-btn.both-btn.active,.filter-btn.both-btn:hover{background:#5abf80;color:#fff;}
+.filter-btn.deungga-btn{border-color:#8FBEE3;color:#8FBEE3;}
+.filter-btn.deungga-btn.active,.filter-btn.deungga-btn:hover{background:#8FBEE3;color:#fff;}
+.filter-btn.heunga-btn{border-color:#E3A0A5;color:#E3A0A5;}
+.filter-btn.heunga-btn.active,.filter-btn.heunga-btn:hover{background:#E3A0A5;color:#fff;}
+.filter-btn.both-btn{border-color:#8FDBAA;color:#8FDBAA;}
+.filter-btn.both-btn.active,.filter-btn.both-btn:hover{background:#8FDBAA;color:#fff;}
 #activity-main{
   flex:1;display:flex;overflow:hidden;
 }
 #side{
   width:180px;flex-shrink:0;
   background:rgba(13,10,6,.98);
-  border-left:2px solid rgba(200,169,110,.3);
+  border-left:2px solid rgba(227,200,138,.3);
   display:flex;flex-direction:column;overflow:hidden;
   padding:6px 4px;gap:4px;
 }
 #side h2{
   font-family:'Noto Serif KR',serif;
-  font-size:.82rem;font-weight:700;
+  font-size:0.97rem;font-weight:700;
   color:var(--gold);text-align:center;
   padding-bottom:4px;
-  border-bottom:1px solid rgba(200,169,110,.3);
+  border-bottom:1px solid rgba(227,200,138,.3);
   flex-shrink:0;
 }
 .zone-label{
   font-family:'Noto Serif KR',serif;
-  font-size:.72rem;font-weight:900;
+  font-size:0.85rem;font-weight:900;
   padding:3px 16px;border-radius:12px;
-  letter-spacing:.05em;flex-shrink:0;
+  letter-spacing:.05em;
+  position:absolute;left:50%;transform:translateX(-50%);z-index:3;
 }
 #lbl-deungga{
-  background:rgba(30,58,95,.92);color:#a8d0f5;
-  border:1.5px solid #5a8abf;
+  background:rgba(30,58,95,.92);color:#C7DFF7;
+  border:1.5px solid #8FBEE3;
+  top:13%;
 }
 #lbl-heunga{
-  background:rgba(95,30,30,.92);color:#f5b0b0;
-  border:1.5px solid #bf5a5a;
+  background:rgba(95,30,30,.92);color:#F5CDD0;
+  border:1.5px solid #E3A0A5;
+  top:63%;
 }
 .drop-zone{
   width:52px;height:50px;border-radius:8px;
@@ -478,36 +487,37 @@ html,body{width:100%;height:100%;overflow:hidden;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   transition:all .22s;cursor:pointer;
-  flex-shrink:0;overflow:hidden;position:relative;
+  overflow:hidden;position:absolute;
+  transform:translate(-50%,-50%);z-index:3;
 }
 .drop-zone .dz-label{
-  font-size:.55rem;font-weight:700;
+  font-size:0.65rem;font-weight:700;
   text-align:center;line-height:1.3;
   pointer-events:none;padding:0 2px;
   color:rgba(40,25,5,.8);
 }
 .drop-zone.hover{
   border-color:var(--gold);border-style:solid;
-  background:rgba(200,169,110,.3);transform:scale(1.08);
+  background:rgba(227,200,138,.3);transform:translate(-50%,-50%) scale(1.08);
 }
 .drop-zone.correct{border-style:solid;cursor:default;}
-.drop-zone.correct-deungga{border-color:#5a8abf;background:rgba(30,58,95,.12);}
-.drop-zone.correct-heunga{border-color:#bf5a5a;background:rgba(95,30,30,.12);}
-.drop-zone.correct-both{border-color:#5abf80;background:rgba(30,95,58,.12);}
+.drop-zone.correct-deungga{border-color:#8FBEE3;background:rgba(30,58,95,.12);}
+.drop-zone.correct-heunga{border-color:#E3A0A5;background:rgba(95,30,30,.12);}
+.drop-zone.correct-both{border-color:#8FDBAA;background:rgba(30,95,58,.12);}
 .drop-zone.wrong{
   border-color:var(--wrong);border-style:solid;
   animation:shake .4s ease;
 }
 @keyframes shake{
-  0%,100%{transform:translateX(0);}
-  20%{transform:translateX(-6px);}
-  40%{transform:translateX(6px);}
-  60%{transform:translateX(-4px);}
-  80%{transform:translateX(4px);}
+  0%,100%{transform:translate(-50%,-50%);}
+  20%{transform:translate(calc(-50% - 6px),-50%);}
+  40%{transform:translate(calc(-50% + 6px),-50%);}
+  60%{transform:translate(calc(-50% - 4px),-50%);}
+  80%{transform:translate(calc(-50% + 4px),-50%);}
 }
 .dz-check{
   position:absolute;top:1px;right:2px;
-  font-size:.62rem;pointer-events:none;
+  font-size:0.73rem;pointer-events:none;
 }
 #ghost{
   position:fixed;pointer-events:none;z-index:9999;
@@ -517,14 +527,14 @@ html,body{width:100%;height:100%;overflow:hidden;
   transform:translate(-50%,-50%);gap:2px;
 }
 #ghost img{width:38px;height:34px;object-fit:contain;}
-#ghost span{font-size:.68rem;color:var(--gold);}
+#ghost span{font-size:0.8rem;color:var(--gold);}
 #toast{
   position:fixed;bottom:60px;left:50%;
   transform:translateX(-50%);
   z-index:9998;padding:9px 24px;border-radius:24px;
   background:rgba(13,10,6,.95);
   border:2px solid var(--gold);
-  font-size:.8rem;color:var(--gold);
+  font-size:0.94rem;color:var(--gold);
   opacity:0;transition:all .3s;
   pointer-events:none;white-space:nowrap;
 }
@@ -683,12 +693,12 @@ html,body{width:100%;height:100%;overflow:hidden;
         <div class="info-title">종묘제례악</div>
         <div class="info-hanja">宗廟祭禮樂</div>
         <div class="info-desc">
-          조선 시대 역대 <strong>왕과 왕비의 신위</strong>를 모신 사당
+          조선 시대 역대 <strong><span class="blank-term" onclick="toggleBlank(this)">왕과 왕비</span>의 신위</strong>를 모신 사당
           <strong>종묘(宗廟)</strong>에서 제사를 지낼 때 연주하던
           <em>음악 · 노래 · 춤</em>을 통칭합니다.<br/><br/>
           단순한 음악이 아니라 국가의 <strong>정통성과 왕실의 권위</strong>를
           상징하는 의례적 행위로,
-          <strong>악(樂) · 가(歌) · 무(舞)</strong>가 하나로 어우러집니다.<br/><br/>
+          <strong><span class="blank-term" onclick="toggleBlank(this)">악(樂)</span> · <span class="blank-term" onclick="toggleBlank(this)">가(歌)</span> · <span class="blank-term" onclick="toggleBlank(this)">무(舞)</span></strong>가 하나로 어우러집니다.<br/><br/>
           <strong>2001년</strong> 유네스코 인류무형문화유산으로 등재되었으며,
           매년 <strong>5월 첫째 일요일</strong> 종묘대제에서 실제로 연주됩니다.
         </div>
@@ -718,15 +728,15 @@ html,body{width:100%;height:100%;overflow:hidden;
       </div>
       <div class="info-text-area">
         <span class="info-label">공간 구성</span>
-        <div class="info-title" style="font-size:1.4rem;">등가 vs 헌가</div>
+        <div class="info-title" style="font-size:1.65rem;">등가 vs 헌가</div>
         <div class="info-desc">
-          <strong style="color:#a8c8f0;font-size:1.05rem;">🔵 등가(登歌)</strong><br/>
+          <strong style="color:#C7DFF7;font-size:1.24rem;">🔵 <span class="blank-term" onclick="toggleBlank(this)">등가(登歌)</span></strong><br/>
           정전 건물의 <strong>댓돌(월대) 위</strong>에서 연주합니다.
           악기 수가 적고 음색이 <strong>차분하고 절제</strong>됩니다.<br/><br/>
-          <strong style="color:#f0a8a8;font-size:1.05rem;">🔴 헌가(軒架)</strong><br/>
+          <strong style="color:#F5CDD0;font-size:1.24rem;">🔴 <span class="blank-term" onclick="toggleBlank(this)">헌가(軒架)</span></strong><br/>
           댓돌 아래 <strong>넓은 마당</strong>에서 연주합니다.
           등가보다 규모가 크고 <strong>웅장하며 화려</strong>합니다.<br/><br/>
-          <strong style="color:#a8f0c0;font-size:1.05rem;">🟢 일무(佾舞)</strong><br/>
+          <strong style="color:#C9F2D9;font-size:1.24rem;">🟢 <span class="blank-term" onclick="toggleBlank(this)">일무(佾舞)</span></strong><br/>
           마당 중앙에서 추는 <strong>의식 춤</strong>으로,
           문무(文舞)와 무무(武舞)가 있습니다.
         </div>
@@ -753,37 +763,37 @@ html,body{width:100%;height:100%;overflow:hidden;
           <div class="tl-item">
             <div class="tl-year">고려</div>
             <div class="tl-dot"></div>
-            <div class="tl-text">중국 <strong>송나라 아악(雅樂)</strong> 도입 — 외래 음악 중심</div>
+            <div class="tl-text">중국 송나라 <strong><span class="blank-term" onclick="toggleBlank(this)">아악(雅樂)</span></strong> 도입 — 외래 음악 중심</div>
           </div>
           <div class="tl-item">
             <div class="tl-year">1418~</div>
             <div class="tl-dot"></div>
-            <div class="tl-text"><strong>세종대왕</strong>, 우리 고유 선율 기반의 궁중음악 창제. 박연과 함께 악기·악보 정비</div>
+            <div class="tl-text"><strong><span class="blank-term" onclick="toggleBlank(this)">세종대왕</span></strong>, 우리 고유 선율 기반의 궁중음악 창제. 박연과 함께 악기·악보 정비</div>
           </div>
           <div class="tl-item">
             <div class="tl-year">1447</div>
             <div class="tl-dot"></div>
-            <div class="tl-text"><strong>보태평·정대업</strong> 창작 — 세종이 직접 작곡한 회례악</div>
+            <div class="tl-text"><strong><span class="blank-term" onclick="toggleBlank(this)">보태평·정대업</span></strong> 창작 — 세종이 직접 작곡한 회례악</div>
           </div>
           <div class="tl-item">
             <div class="tl-year">1464</div>
             <div class="tl-dot"></div>
-            <div class="tl-text"><strong>세조</strong>, 보태평·정대업을 종묘제례악으로 확정. 지금의 체계 완성</div>
+            <div class="tl-text"><strong><span class="blank-term" onclick="toggleBlank(this)">세조</span></strong>, 보태평·정대업을 종묘제례악으로 확정. 지금의 체계 완성</div>
           </div>
           <div class="tl-item">
             <div class="tl-year">1493</div>
             <div class="tl-dot"></div>
-            <div class="tl-text">성종 때 <strong>악학궤범(樂學軌範)</strong> 편찬 — 악기·악보·무용 체계 집대성</div>
+            <div class="tl-text">성종 때 <strong><span class="blank-term" onclick="toggleBlank(this)">악학궤범(樂學軌範)</span></strong> 편찬 — 악기·악보·무용 체계 집대성</div>
           </div>
           <div class="tl-item">
             <div class="tl-year">1975</div>
             <div class="tl-dot"></div>
-            <div class="tl-text"><strong>국가무형문화재 제1호</strong> 지정 — 전통 보존 공식화</div>
+            <div class="tl-text"><strong><span class="blank-term" onclick="toggleBlank(this)">국가무형문화재 제1호</span></strong> 지정 — 전통 보존 공식화</div>
           </div>
           <div class="tl-item">
             <div class="tl-year">2001</div>
             <div class="tl-dot"></div>
-            <div class="tl-text"><strong>UNESCO</strong> 인류무형문화유산 등재 — 세계적 가치 인정</div>
+            <div class="tl-text"><strong><span class="blank-term" onclick="toggleBlank(this)">UNESCO</span></strong> 인류무형문화유산 등재 — 세계적 가치 인정</div>
           </div>
         </div>
       </div>
@@ -802,32 +812,32 @@ html,body{width:100%;height:100%;overflow:hidden;
       <div class="procedure-grid">
         <div class="proc-card">
           <div class="proc-num">01</div>
-          <div class="proc-title">영신(迎神)</div>
+          <div class="proc-title"><span class="blank-term" onclick="toggleBlank(this)">영신(迎神)</span></div>
           <div class="proc-desc">신을 맞이하는 절차. <strong>헌가</strong>에서 음악 연주 시작</div>
         </div>
         <div class="proc-card">
           <div class="proc-num">02</div>
-          <div class="proc-title">전폐(奠幣)</div>
+          <div class="proc-title"><span class="blank-term" onclick="toggleBlank(this)">전폐(奠幣)</span></div>
           <div class="proc-desc">폐백(비단)을 올리는 절차. <strong>등가</strong>에서 보태평 연주</div>
         </div>
         <div class="proc-card">
           <div class="proc-num">03</div>
-          <div class="proc-title">초헌(初獻)</div>
+          <div class="proc-title"><span class="blank-term" onclick="toggleBlank(this)">초헌(初獻)</span></div>
           <div class="proc-desc">첫 번째 술잔을 올리는 절차. <strong>보태평</strong> 11곡 연주</div>
         </div>
         <div class="proc-card">
           <div class="proc-num">04</div>
-          <div class="proc-title">아헌(亞獻)</div>
+          <div class="proc-title"><span class="blank-term" onclick="toggleBlank(this)">아헌(亞獻)</span></div>
           <div class="proc-desc">두 번째 술잔을 올리는 절차. <strong>정대업</strong> 연주 시작</div>
         </div>
         <div class="proc-card">
           <div class="proc-num">05</div>
-          <div class="proc-title">종헌(終獻)</div>
+          <div class="proc-title"><span class="blank-term" onclick="toggleBlank(this)">종헌(終獻)</span></div>
           <div class="proc-desc">세 번째이자 마지막 술잔. <strong>정대업</strong> 계속 연주</div>
         </div>
         <div class="proc-card">
           <div class="proc-num">06</div>
-          <div class="proc-title">송신(送神)</div>
+          <div class="proc-title"><span class="blank-term" onclick="toggleBlank(this)">송신(送神)</span></div>
           <div class="proc-desc">신을 보내드리는 절차. <strong>헌가</strong>에서 마무리 음악</div>
         </div>
       </div>
@@ -848,30 +858,30 @@ html,body{width:100%;height:100%;overflow:hidden;
         <div class="music-cards" style="height:auto; align-items:stretch; gap:28px;">
 
           <!-- 보태평 카드 -->
-          <div class="music-card" style="padding:32px 36px; gap:16px; border:2px solid rgba(201,168,76,.4); border-radius:18px;">
-            <h3 style="font-size:1.8rem;">보태평 保太平</h3>
-            <div class="hanja" style="font-size:1rem;">문덕(文德)을 기리는 음악</div>
-            <p style="font-size:1rem; line-height:2;">역대 왕들의 <strong>문치(文治)와 덕(德)</strong>을 찬양합니다.
-            제사의 <strong>초헌(첫 번째 헌작)</strong> 절차에서 연주됩니다.</p>
+          <div class="music-card" style="padding:32px 36px; gap:16px; border:2px solid rgba(227,200,138,.4); border-radius:18px;">
+            <h3 style="font-size:2.12rem;">보태평 保太平</h3>
+            <div class="hanja" style="font-size:1.18rem;">문덕(文德)을 기리는 음악</div>
+            <p style="font-size:1.18rem; line-height:2;">역대 왕들의 문치(文治)와 <strong><span class="blank-term" onclick="toggleBlank(this)">덕(德)</span></strong>을 찬양합니다.
+            제사의 <strong><span class="blank-term" onclick="toggleBlank(this)">초헌</span>(첫 번째 헌작)</strong> 절차에서 연주됩니다.</p>
             <div class="tracks" style="gap:7px;">
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">희문</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">기명</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">귀인</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">형가</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">즙수</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">옹안</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">역성</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">납씨</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">추유</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">정세</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">대유</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">희문</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">기명</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">귀인</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">형가</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">즙수</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">옹안</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">역성</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">납씨</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">추유</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">정세</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">대유</span>
             </div>
             <a href="https://www.youtube.com/watch?v=F5wv7vp78iA"
                target="_blank"
                style="display:flex;align-items:center;justify-content:center;gap:8px;
                       margin-top:12px;padding:12px 20px;border-radius:24px;
-                      background:rgba(180,0,0,.9);color:#fff;
-                      text-decoration:none;font-size:.95rem;font-weight:700;
+                      background:rgba(224,148,140,.9);color:#fff;
+                      text-decoration:none;font-size:1.12rem;font-weight:700;
                       letter-spacing:.05em;transition:opacity .2s;width:100%;"
                onmouseover="this.style.opacity='.75'"
                onmouseout="this.style.opacity='1'">
@@ -880,30 +890,30 @@ html,body{width:100%;height:100%;overflow:hidden;
           </div>
 
           <!-- 정대업 카드 -->
-          <div class="music-card" style="padding:32px 36px; gap:16px; border:2px solid rgba(201,168,76,.4); border-radius:18px;">
-            <h3 style="font-size:1.8rem;">정대업 定大業</h3>
-            <div class="hanja" style="font-size:1rem;">무공(武功)을 기리는 음악</div>
-            <p style="font-size:1rem; line-height:2;">역대 왕들의 <strong>무공(武功)과 업적</strong>을 찬양합니다.
-            <strong>아헌·종헌(두·세 번째 헌작)</strong> 절차에서 연주됩니다.</p>
+          <div class="music-card" style="padding:32px 36px; gap:16px; border:2px solid rgba(227,200,138,.4); border-radius:18px;">
+            <h3 style="font-size:2.12rem;">정대업 定大業</h3>
+            <div class="hanja" style="font-size:1.18rem;">무공(武功)을 기리는 음악</div>
+            <p style="font-size:1.18rem; line-height:2;">역대 왕들의 무공(武功)과 <strong><span class="blank-term" onclick="toggleBlank(this)">업적</span></strong>을 찬양합니다.
+            <strong><span class="blank-term" onclick="toggleBlank(this)">아헌·종헌</span>(두·세 번째 헌작)</strong> 절차에서 연주됩니다.</p>
             <div class="tracks" style="gap:7px;">
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">소무</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">독경</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">탁정</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">선위</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">신정</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">분웅</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">순응</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">총유</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">정동</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">평만</span>
-              <span class="track-tag" style="font-size:.8rem; padding:5px 13px;">영관</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">소무</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">독경</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">탁정</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">선위</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">신정</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">분웅</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">순응</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">총유</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">정동</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">평만</span>
+              <span class="track-tag" style="font-size:0.94rem; padding:5px 13px;">영관</span>
             </div>
             <a href="https://www.youtube.com/watch?v=f2AJqzqSqq0"
                target="_blank"
                style="display:flex;align-items:center;justify-content:center;gap:8px;
                       margin-top:12px;padding:12px 20px;border-radius:24px;
-                      background:rgba(180,0,0,.9);color:#fff;
-                      text-decoration:none;font-size:.95rem;font-weight:700;
+                      background:rgba(224,148,140,.9);color:#fff;
+                      text-decoration:none;font-size:1.12rem;font-weight:700;
                       letter-spacing:.05em;transition:opacity .2s;width:100%;"
                onmouseover="this.style.opacity='.75'"
                onmouseout="this.style.opacity='1'">
@@ -1024,10 +1034,10 @@ html,body{width:100%;height:100%;overflow:hidden;
 
   <div id="act-header">
     <div>
-      <h1 style="font-family:'Noto Serif KR',serif;font-size:1.1rem;font-weight:900;color:var(--gold);letter-spacing:.08em;">
+      <h1 style="font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:900;color:var(--gold);letter-spacing:.08em;">
         🎵 종묘제례악 — 악기 배치 활동
       </h1>
-      <div style="font-size:.65rem;color:#b8a882;margin-top:1px;">악기 카드를 드래그하거나 클릭하여 배치해보세요</div>
+      <div style="font-size:0.77rem;color:#D8CBB0;margin-top:1px;">악기 카드를 드래그하거나 클릭하여 배치해보세요</div>
     </div>
     <div class="hdr-right">
       <div id="score-box">0 / 22</div>
@@ -1037,7 +1047,7 @@ html,body{width:100%;height:100%;overflow:hidden;
   </div>
 
   <div id="filter-bar">
-    <span style="font-size:.65rem;color:#b8a882;margin-right:2px;">악기 분류 :</span>
+    <span style="font-size:0.77rem;color:#D8CBB0;margin-right:2px;">악기 분류 :</span>
     <button class="filter-btn all-btn active"  onclick="filterPieces('all')">전체</button>
     <button class="filter-btn deungga-btn"     onclick="filterPieces('deungga')">🔵 등가 전용</button>
     <button class="filter-btn heunga-btn"      onclick="filterPieces('heunga')">🔴 헌가 전용</button>
@@ -1052,53 +1062,37 @@ html,body{width:100%;height:100%;overflow:hidden;
         <div id="board">
           <img id="board-bg" src="종묘제례악_배치도.png" alt="배치도"/>
 
-          <!-- 등가 구역 -->
-          <div class="zone-section" style="justify-content:flex-end; padding-bottom:12px;">
-  <div class="zone-label" id="lbl-deungga">🔵 등가 (堂上 — 월대 위)</div>
-            <div class="dz-row">
-              <div class="drop-zone" id="dz-박-등가"     data-name="박"    data-zone="deungga"><div class="dz-label">박</div></div>
-              <div class="drop-zone" id="dz-아쟁"         data-name="아쟁"  data-zone="deungga"><div class="dz-label">아쟁</div></div>
-            </div>
-            <div class="dz-row">
-              <div class="drop-zone" id="dz-대금-등가"   data-name="대금"   data-zone="deungga"><div class="dz-label">대금</div></div>
-              <div class="drop-zone" id="dz-장구-등가"   data-name="장구"   data-zone="deungga"><div class="dz-label">장구</div></div>
-              <div class="drop-zone" id="dz-당피리-등가" data-name="당피리" data-zone="deungga"><div class="dz-label">당피리</div></div>
-            </div>
-            <div class="dz-row">
-              <div class="drop-zone" id="dz-어-등가"     data-name="어"    data-zone="deungga"><div class="dz-label">어</div></div>
-              <div class="drop-zone" id="dz-방향-등가"   data-name="방향"  data-zone="deungga"><div class="dz-label">방향</div></div>
-              <div class="drop-zone" id="dz-편경-등가"   data-name="편경"  data-zone="deungga"><div class="dz-label">편경</div></div>
-              <div class="drop-zone" id="dz-절고"         data-name="절고"  data-zone="deungga"><div class="dz-label">절고</div></div>
-              <div class="drop-zone" id="dz-축-등가"     data-name="축"    data-zone="deungga"><div class="dz-label">축</div></div>
-              <div class="drop-zone" id="dz-편종-등가"   data-name="편종"  data-zone="deungga"><div class="dz-label">편종</div></div>
-            </div>
-          </div>
-
+          <div class="zone-label" id="lbl-deungga">🔵 등가 (堂上 — 월대 위)</div>
+          <div class="zone-label" id="lbl-heunga">🔴 헌가 (堂下 — 월대 아래)</div>
           <div class="zone-divider"></div>
 
-          <!-- 헌가 구역 -->
-          <div class="zone-section" style="justify-content:flex-start; padding-top:8px;">
-  <div class="zone-label" id="lbl-heunga">🔴 헌가 (堂下 — 월대 아래)</div>
-            <div class="dz-row">
-              <div class="drop-zone" id="dz-일무"         data-name="일무"  data-zone="heunga"><div class="dz-label">일무</div></div>
-              <div class="drop-zone" id="dz-박-헌가"     data-name="박"    data-zone="heunga"><div class="dz-label">박</div></div>
-            </div>
-            <div class="dz-row">
-              <div class="drop-zone" id="dz-진고"         data-name="진고"  data-zone="heunga"><div class="dz-label">진고</div></div>
-              <div class="drop-zone" id="dz-편종-헌가"   data-name="편종"  data-zone="heunga"><div class="dz-label">편종</div></div>
-              <div class="drop-zone" id="dz-어-헌가"     data-name="어"    data-zone="heunga"><div class="dz-label">어</div></div>
-              <div class="drop-zone" id="dz-태평소"       data-name="태평소" data-zone="heunga"><div class="dz-label">태평소</div></div>
-              <div class="drop-zone" id="dz-축-헌가"     data-name="축"    data-zone="heunga"><div class="dz-label">축</div></div>
-              <div class="drop-zone" id="dz-편경-헌가"   data-name="편경"  data-zone="heunga"><div class="dz-label">편경</div></div>
-              <div class="drop-zone" id="dz-방향-헌가"   data-name="방향"  data-zone="heunga"><div class="dz-label">방향</div></div>
-            </div>
-            <div class="dz-row">
-              <div class="drop-zone" id="dz-당피리-헌가" data-name="당피리" data-zone="heunga"><div class="dz-label">당피리</div></div>
-              <div class="drop-zone" id="dz-장구-헌가"   data-name="장구"  data-zone="heunga"><div class="dz-label">장구</div></div>
-              <div class="drop-zone" id="dz-대금-헌가"   data-name="대금"  data-zone="heunga"><div class="dz-label">대금</div></div>
-              <div class="drop-zone" id="dz-해금"         data-name="해금"  data-zone="heunga"><div class="dz-label">해금</div></div>
-            </div>
-          </div>
+          <!-- 등가 구역 (배치도 이미지 속 실제 위치와 동일한 좌표) -->
+          <div class="drop-zone" id="dz-박-등가"     data-name="박"    data-zone="deungga" style="left:37.5%;top:34%;"><div class="dz-label">박</div></div>
+          <div class="drop-zone" id="dz-아쟁"         data-name="아쟁"  data-zone="deungga" style="left:78.9%;top:34%;"><div class="dz-label">아쟁</div></div>
+          <div class="drop-zone" id="dz-대금-등가"   data-name="대금"   data-zone="deungga" style="left:27%;top:40.7%;"><div class="dz-label">대금</div></div>
+          <div class="drop-zone" id="dz-장구-등가"   data-name="장구"   data-zone="deungga" style="left:65.2%;top:42.7%;"><div class="dz-label">장구</div></div>
+          <div class="drop-zone" id="dz-당피리-등가" data-name="당피리" data-zone="deungga" style="left:78.9%;top:43.8%;"><div class="dz-label">당피리</div></div>
+          <div class="drop-zone" id="dz-어-등가"     data-name="어"    data-zone="deungga" style="left:5.8%;top:54.2%;"><div class="dz-label">어</div></div>
+          <div class="drop-zone" id="dz-방향-등가"   data-name="방향"  data-zone="deungga" style="left:15.4%;top:54.2%;"><div class="dz-label">방향</div></div>
+          <div class="drop-zone" id="dz-편경-등가"   data-name="편경"  data-zone="deungga" style="left:26.4%;top:54.2%;"><div class="dz-label">편경</div></div>
+          <div class="drop-zone" id="dz-절고"         data-name="절고"  data-zone="deungga" style="left:36.7%;top:54.2%;"><div class="dz-label">절고</div></div>
+          <div class="drop-zone" id="dz-축-등가"     data-name="축"    data-zone="deungga" style="left:65.7%;top:54.2%;"><div class="dz-label">축</div></div>
+          <div class="drop-zone" id="dz-편종-등가"   data-name="편종"  data-zone="deungga" style="left:78.9%;top:54.2%;"><div class="dz-label">편종</div></div>
+
+          <!-- 헌가 구역 (배치도 이미지 속 실제 위치와 동일한 좌표) -->
+          <div class="drop-zone" id="dz-일무"         data-name="일무"  data-zone="heunga" style="left:21%;top:71.5%;"><div class="dz-label">일무</div></div>
+          <div class="drop-zone" id="dz-박-헌가"     data-name="박"    data-zone="heunga" style="left:65.9%;top:71.5%;"><div class="dz-label">박</div></div>
+          <div class="drop-zone" id="dz-진고"         data-name="진고"  data-zone="heunga" style="left:6.3%;top:82.1%;"><div class="dz-label">진고</div></div>
+          <div class="drop-zone" id="dz-편종-헌가"   data-name="편종"  data-zone="heunga" style="left:16%;top:82.1%;"><div class="dz-label">편종</div></div>
+          <div class="drop-zone" id="dz-어-헌가"     data-name="어"    data-zone="heunga" style="left:26.5%;top:82.1%;"><div class="dz-label">어</div></div>
+          <div class="drop-zone" id="dz-태평소"       data-name="태평소" data-zone="heunga" style="left:36.6%;top:82.1%;"><div class="dz-label">태평소</div></div>
+          <div class="drop-zone" id="dz-축-헌가"     data-name="축"    data-zone="heunga" style="left:65.9%;top:82.1%;"><div class="dz-label">축</div></div>
+          <div class="drop-zone" id="dz-편경-헌가"   data-name="편경"  data-zone="heunga" style="left:80%;top:82.1%;"><div class="dz-label">편경</div></div>
+          <div class="drop-zone" id="dz-방향-헌가"   data-name="방향"  data-zone="heunga" style="left:92%;top:82.1%;"><div class="dz-label">방향</div></div>
+          <div class="drop-zone" id="dz-당피리-헌가" data-name="당피리" data-zone="heunga" style="left:21%;top:93.3%;"><div class="dz-label">당피리</div></div>
+          <div class="drop-zone" id="dz-장구-헌가"   data-name="장구"  data-zone="heunga" style="left:66.6%;top:93.8%;"><div class="dz-label">장구</div></div>
+          <div class="drop-zone" id="dz-대금-헌가"   data-name="대금"  data-zone="heunga" style="left:80.6%;top:93.8%;"><div class="dz-label">대금</div></div>
+          <div class="drop-zone" id="dz-해금"         data-name="해금"  data-zone="heunga" style="left:92%;top:93.8%;"><div class="dz-label">해금</div></div>
 
         </div><!-- /#board -->
       </div>
@@ -1108,9 +1102,9 @@ html,body{width:100%;height:100%;overflow:hidden;
       <h2>🎶 악기 목록</h2>
       <div class="side-hint">드래그 또는 클릭 후<br/>위치 클릭으로 배치</div>
       <div id="legend">
-        <div class="leg-item"><div class="leg-dot" style="background:#5a8abf"></div>등가</div>
-        <div class="leg-item"><div class="leg-dot" style="background:#bf5a5a"></div>헌가</div>
-        <div class="leg-item"><div class="leg-dot" style="background:#5abf80"></div>공통</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#8FBEE3"></div>등가</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#E3A0A5"></div>헌가</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#8FDBAA"></div>공통</div>
       </div>
       <div id="pieces-wrap">
         <div class="piece deungga" data-name="아쟁"   data-type="deungga" draggable="true"><img src="아쟁.jpg"    alt="아쟁"/><div class="pname">아쟁</div></div>
@@ -1239,9 +1233,9 @@ const INSTR_DATA = {
 };
 
 const ZONE_STYLE={
-  both:{bg:'rgba(26,95,42,.9)',color:'#a8f0c0',border:'#5abf80'},
-  deungga:{bg:'rgba(30,58,95,.9)',color:'#a8c8f0',border:'#5a8abf'},
-  heunga:{bg:'rgba(95,30,30,.9)',color:'#f0a8a8',border:'#bf5a5a'}
+  both:{bg:'rgba(26,95,42,.9)',color:'#C9F2D9',border:'#8FDBAA'},
+  deungga:{bg:'rgba(30,58,95,.9)',color:'#C7DFF7',border:'#8FBEE3'},
+  heunga:{bg:'rgba(95,30,30,.9)',color:'#F5CDD0',border:'#E3A0A5'}
 };
 
 function openModal(name){
@@ -1249,7 +1243,7 @@ function openModal(name){
   const zs = ZONE_STYLE[d.zone];
   const badge = document.getElementById('modal-zone-badge');
   badge.textContent = d.zoneTxt;
-  badge.style.cssText=`background:${zs.bg};color:${zs.color};border:1.5px solid ${zs.border};padding:4px 14px;border-radius:16px;font-size:.76rem;font-weight:700;`;
+  badge.style.cssText=`background:${zs.bg};color:${zs.color};border:1.5px solid ${zs.border};padding:4px 14px;border-radius:16px;font-size:0.9rem;font-weight:700;`;
   document.getElementById('modal-name').textContent = name;
   document.getElementById('modal-hanja').textContent = d.hanja;
   document.getElementById('modal-img').src = d.img;
@@ -1265,6 +1259,13 @@ function closeModal(){
 }
 function closeModalOutside(e){
   if(e.target===document.getElementById('modal-overlay')) closeModal();
+}
+
+/* ═══════════════════════════════════════
+   빈칸 클릭 — 정답 보기/가리기
+═══════════════════════════════════════ */
+function toggleBlank(el){
+  el.classList.toggle('revealed');
 }
 
 /* ═══════════════════════════════════════
@@ -1301,9 +1302,9 @@ function updateScore(){
   const total = getTotalDZ();
   scoreBox.textContent = `${correctCount} / ${total}`;
   if(correctCount >= total){
-    scoreBox.style.color = '#7ec8a0';
-    scoreBox.style.borderColor = '#7ec8a0';
-    showToast('🎉 모든 악기를 완벽하게 배치했습니다!','#7ec8a0');
+    scoreBox.style.color = '#A3E0BE';
+    scoreBox.style.borderColor = '#A3E0BE';
+    showToast('🎉 모든 악기를 완벽하게 배치했습니다!','#A3E0BE');
   }
 }
 
@@ -1321,7 +1322,7 @@ function filterPieces(type){
     }
   });
   const labels={'all':'전체 악기','deungga':'🔵 등가 전용','heunga':'🔴 헌가 전용','both':'🟢 공통 악기'};
-  const colors={'all':'#c8a96e','deungga':'#5a8abf','heunga':'#bf5a5a','both':'#5abf80'};
+  const colors={'all':'#E3C88A','deungga':'#8FBEE3','heunga':'#E3A0A5','both':'#8FDBAA'};
   showToast(labels[type], colors[type]);
 }
 
@@ -1329,7 +1330,7 @@ function attemptPlace(dz, piece){
   const need  = dz.dataset.name;
   const given = piece.dataset.name;
   if(placedMap[dz.id]){
-    showToast('이미 배치된 위치입니다','#b8a882'); return;
+    showToast('이미 배치된 위치입니다','#D8CBB0'); return;
   }
   if(given === need){
     const cls = ZONE_CLASS[given] || 'both';
@@ -1341,11 +1342,11 @@ function attemptPlace(dz, piece){
     correctCount++;
     updateScore();
     if(selectedPiece===piece){ selectedPiece=null; }
-    showToast(`✅ 정답! ${given}`,'#2d7a3d');
+    showToast(`✅ 정답! ${given}`,'#4F9A63');
   } else {
     dz.classList.add('wrong');
     setTimeout(()=>dz.classList.remove('wrong'),500);
-    showToast(`❌ "${given}"은(는) 여기가 아닙니다!`,'#c0392b');
+    showToast(`❌ "${given}"은(는) 여기가 아닙니다!`,'#E0847B');
   }
 }
 
@@ -1353,10 +1354,10 @@ document.querySelectorAll('.piece').forEach(p=>{
   p.addEventListener('click',()=>{
     if(p.classList.contains('used')) return;
     if(p.classList.contains('hidden-filter')) return;
-    if(selectedPiece===p){ p.classList.remove('selected'); selectedPiece=null; showToast('선택 해제','#b8a882'); return; }
+    if(selectedPiece===p){ p.classList.remove('selected'); selectedPiece=null; showToast('선택 해제','#D8CBB0'); return; }
     if(selectedPiece) selectedPiece.classList.remove('selected');
     selectedPiece=p; p.classList.add('selected');
-    showToast(`"${p.dataset.name}" 선택 — 배치할 칸을 클릭하세요`,'#c8a96e');
+    showToast(`"${p.dataset.name}" 선택 — 배치할 칸을 클릭하세요`,'#E3C88A');
   });
   p.addEventListener('dragstart',e=>{
     if(p.classList.contains('used')){ e.preventDefault(); return; }
@@ -1379,7 +1380,7 @@ document.addEventListener('mousemove',e=>{
 document.querySelectorAll('.drop-zone').forEach(dz=>{
   dz.addEventListener('click',()=>{
     if(dz.classList.contains('correct')) return;
-    if(!selectedPiece){ showToast('먼저 악기 카드를 클릭해서 선택하세요','#b8a882'); return; }
+    if(!selectedPiece){ showToast('먼저 악기 카드를 클릭해서 선택하세요','#D8CBB0'); return; }
     const p=selectedPiece; selectedPiece.classList.remove('selected'); selectedPiece=null;
     attemptPlace(dz,p);
   });
@@ -1390,7 +1391,7 @@ document.querySelectorAll('.drop-zone').forEach(dz=>{
 
 function showAnswer(){
   const empties=[...document.querySelectorAll('.drop-zone')].filter(dz=>!dz.classList.contains('correct'));
-  if(!empties.length){ showToast('이미 모두 배치되었습니다!','#7ec8a0'); return; }
+  if(!empties.length){ showToast('이미 모두 배치되었습니다!','#A3E0BE'); return; }
   let delay=0;
   empties.forEach(dz=>{
     setTimeout(()=>{
@@ -1400,7 +1401,7 @@ function showAnswer(){
     },delay);
     delay+=80;
   });
-  showToast('📖 정답을 자동으로 배치합니다...','#c8a96e');
+  showToast('📖 정답을 자동으로 배치합니다...','#E3C88A');
 }
 
 function resetAll(){
@@ -1416,11 +1417,11 @@ function resetAll(){
   scoreBox.style.color=''; scoreBox.style.borderColor='';
   filterPieces('all');
   updateScore();
-  showToast('🔄 초기화되었습니다','#c8a96e');
+  showToast('🔄 초기화되었습니다','#E3C88A');
 }
 
 let toastTimer;
-function showToast(msg,color='#c8a96e'){
+function showToast(msg,color='#E3C88A'){
   clearTimeout(toastTimer);
   toastEl.textContent=msg;
   toastEl.style.borderColor=color;
