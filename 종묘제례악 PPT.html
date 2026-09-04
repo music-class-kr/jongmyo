@@ -183,12 +183,12 @@ html,body{width:100%;height:100%;overflow:hidden;
 }
 
 /* 타임라인 */
-.timeline{display:flex;flex-direction:column;gap:10px;}
+.timeline{display:flex;flex-direction:column;gap:22px;}
 .tl-item{display:flex;gap:10px;align-items:flex-start;}
-.tl-year{flex-shrink:0;width:72px;text-align:right;
+.tl-year{flex-shrink:0;width:78px;text-align:right;
   font-family:'Noto Serif KR',serif;
-  font-size:1.15rem;font-weight:700;
-  color:var(--gold);padding-top:4px;}
+  font-size:1.32rem;font-weight:700;
+  color:var(--gold);padding-top:6px;}
 .tl-dot{flex-shrink:0;width:12px;height:12px;
   border-radius:50%;background:var(--gold);
   margin-top:4px;position:relative;}
@@ -197,7 +197,7 @@ html,body{width:100%;height:100%;overflow:hidden;
   width:2px;height:calc(100% + 10px);
   background:rgba(240,210,138,.3);}
 .tl-item:last-child .tl-dot::after{display:none;}
-.tl-text{font-size:1.9rem;line-height:1.32;color:#F0EDE4;}
+.tl-text{font-size:2.15rem;line-height:1.36;color:#F0EDE4;}
 .tl-text strong{font-weight:800;font-size:1.08em;color:var(--gold2);}
 
 /* 보태평/정대업 카드 */
@@ -1289,7 +1289,7 @@ function toggleBlank(el){
 function paintChalkText(root){
   let i = 0;
   root.querySelectorAll('.blank-term').forEach(el=>{
-    if(el.closest('.tl-text')){ el.dataset.chalk = '#F5DFA3'; return; }
+    if(el.closest('.tl-text')){ el.dataset.chalk = '#F2A9B5'; return; }
     el.dataset.chalk = CHALK_COLORS[i % CHALK_COLORS.length]; i++;
   });
   root.querySelectorAll('strong').forEach(el=>{
