@@ -549,7 +549,7 @@ html,body{width:100%;height:100%;overflow:hidden;
   overflow:hidden;padding:4px;
 }
 .piece-flyer.waiting{pointer-events:auto;cursor:pointer;animation:flyerPulse 1.1s ease-in-out infinite;}
-.piece-flyer img{width:86%;height:76%;object-fit:contain;flex-shrink:0;}
+.piece-flyer img{width:82%;height:62%;object-fit:contain;flex-shrink:0;}
 .piece-flyer span{font-size:1.14rem;font-weight:800;color:#2A2016;margin-top:2px;}
 .piece-flyer em{font-style:normal;font-size:0.79rem;color:#8A7458;margin-top:2px;}
 @keyframes flyerPulse{
@@ -1353,7 +1353,6 @@ function attemptPlace(dz, piece){
     correctCount++;
     updateScore();
     if(selectedPiece===piece){ selectedPiece=null; }
-    showToast('✅ 정답입니다!','#4F9A63');
   } else {
     dz.classList.add('wrong');
     setTimeout(()=>dz.classList.remove('wrong'),500);
@@ -1365,7 +1364,7 @@ function popupThenPlace(piece, dz){
   const pr = piece.getBoundingClientRect();
   const flyer = document.createElement('div');
   flyer.className = 'piece-flyer';
-  flyer.innerHTML = `<img src="${IMG[piece.dataset.name]||''}" alt="악기"/><em>클릭하면 자리로 이동해요</em>`;
+  flyer.innerHTML = `<img src="${IMG[piece.dataset.name]||''}" alt="${piece.dataset.name}"/><span>${piece.dataset.name}</span><em>클릭하면 자리로 이동해요</em>`;
   const backdrop = document.createElement('div');
   backdrop.className = 'flyer-backdrop';
   document.body.appendChild(backdrop);
