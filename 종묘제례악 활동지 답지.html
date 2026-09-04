@@ -66,15 +66,22 @@ body{
   color:#c00;
   font-weight:800;
   font-size:11pt;
-  border-bottom:2.5px solid #c00;
-  border-radius:2px;
-  padding:1px 5px;
+  border:1.8px solid #c00;
+  border-radius:6px;
+  background:#fdecec;
+  padding:1px 7px;
   min-width:50px;
   text-align:center;
 }
 .ans-md{min-width:72px;}
 .ans-lg{min-width:94px;}
 .ans-sm{min-width:52px;}
+
+.ans-plain{
+  display:inline-block;
+  color:#c00;
+  font-weight:800;
+}
 
 .blank{
   display:inline-block;border-bottom:2.5px solid #333;
@@ -331,17 +338,17 @@ body{
   <div class="elem-grid">
     <div class="elem-card">
       <span class="elem-icon">🎵</span>
-      <div class="elem-name"><span class="ans ans-md">악(樂)</span></div>
+      <div class="elem-name"><span class="ans-plain">악(樂)</span></div>
       <div class="elem-desc">제례 때 연주하는 음악</div>
     </div>
     <div class="elem-card">
       <span class="elem-icon">🎤</span>
-      <div class="elem-name"><span class="ans ans-md">가(歌)</span></div>
+      <div class="elem-name"><span class="ans-plain">가(歌)</span></div>
       <div class="elem-desc">악장(樂章)을 노래로 부름</div>
     </div>
     <div class="elem-card">
       <span class="elem-icon">💃</span>
-      <div class="elem-name"><span class="ans ans-md">무(舞)</span></div>
+      <div class="elem-name"><span class="ans-plain">무(舞)</span></div>
       <div class="elem-desc">마당에서 추는 의식 춤</div>
     </div>
   </div>
@@ -357,23 +364,23 @@ body{
       <thead><tr><th style="width:82px;">용어</th><th>뜻</th></tr></thead>
       <tbody>
         <tr>
-          <td class="term-key"><span class="ans ans-sm">등가</span></td>
+          <td class="term-key"><span class="ans-plain">등가</span></td>
           <td>정전 건물 <strong>댓돌(월대) 위</strong>에서 연주하는 악단. 악기 수가 적고 음색이 차분함.</td>
         </tr>
         <tr>
-          <td class="term-key"><span class="ans ans-sm">헌가</span></td>
+          <td class="term-key"><span class="ans-plain">헌가</span></td>
           <td>댓돌 <strong>아래 마당</strong>에서 연주하는 악단. 규모가 크고 웅장하며 화려함.</td>
         </tr>
         <tr>
-          <td class="term-key"><span class="ans ans-sm">일무</span></td>
+          <td class="term-key"><span class="ans-plain">일무</span></td>
           <td>마당 중앙에서 추는 <strong>의식 춤</strong>. 문무(文舞)와 무무(武舞)로 구성됨.</td>
         </tr>
         <tr>
-          <td class="term-key"><span class="ans ans-sm">보태평</span></td>
+          <td class="term-key"><span class="ans-plain">보태평</span></td>
           <td>역대 왕들의 <strong>문치와 덕</strong>을 찬양하는 음악. 초헌 절차에서 연주.</td>
         </tr>
         <tr>
-          <td class="term-key"><span class="ans ans-sm">정대업</span></td>
+          <td class="term-key"><span class="ans-plain">정대업</span></td>
           <td>역대 왕들의 <strong>무공과 업적</strong>을 찬양하는 음악. 아헌·종헌 절차에서 연주.</td>
         </tr>
       </tbody>
@@ -394,23 +401,23 @@ body{
       </div>
       <div class="comp-row">
         <div class="c-key">위치</div>
-        <div class="c-ans"><span class="ans">월대 위</span></div>
-        <div class="c-ans"><span class="ans">월대 아래 마당</span></div>
+        <div class="c-ans"><span class="ans-plain">월대 위</span></div>
+        <div class="c-ans"><span class="ans-plain">월대 아래 마당</span></div>
       </div>
       <div class="comp-row">
         <div class="c-key">규모</div>
-        <div class="c-ans"><span class="ans">소규모·절제</span></div>
-        <div class="c-ans"><span class="ans">대규모·화려</span></div>
+        <div class="c-ans"><span class="ans-plain">소규모·절제</span></div>
+        <div class="c-ans"><span class="ans-plain">대규모·화려</span></div>
       </div>
       <div class="comp-row">
         <div class="c-key">음색</div>
-        <div class="c-ans"><span class="ans">차분하고 맑음</span></div>
-        <div class="c-ans"><span class="ans">웅장하고 힘참</span></div>
+        <div class="c-ans"><span class="ans-plain">차분하고 맑음</span></div>
+        <div class="c-ans"><span class="ans-plain">웅장하고 힘참</span></div>
       </div>
       <div class="comp-row">
         <div class="c-key">연주 시기</div>
-        <div class="c-ans"><span class="ans">전폐·초헌</span></div>
-        <div class="c-ans"><span class="ans">영신·아헌·종헌·송신</span></div>
+        <div class="c-ans"><span class="ans-plain">전폐·초헌</span></div>
+        <div class="c-ans"><span class="ans-plain">영신·아헌·종헌·송신</span></div>
       </div>
     </div>
     <div class="sec-sub" style="margin-top:3px;">
@@ -487,32 +494,32 @@ body{
     <div class="story-grid">
       <div class="story-card">
         <div class="step-badge-sm">① 첫 번째 절차</div>
-        <div><span class="ans" style="font-size:13pt;">영신(迎神)</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">영신(迎神)</span></div>
         <div class="scene-body-sm">신을 <strong>맞이하는</strong> 절차. <strong>헌가</strong>에서 음악 연주 시작.</div>
       </div>
       <div class="story-card">
         <div class="step-badge-sm">② 두 번째 절차</div>
-        <div><span class="ans" style="font-size:13pt;">전폐(奠幣)</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">전폐(奠幣)</span></div>
         <div class="scene-body-sm">폐백(비단)을 <strong>올리는</strong> 절차. <strong>등가</strong>에서 보태평 연주.</div>
       </div>
       <div class="story-card">
         <div class="step-badge-sm">③ 세 번째 절차</div>
-        <div><span class="ans" style="font-size:13pt;">초헌(初獻)</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">초헌(初獻)</span></div>
         <div class="scene-body-sm"><strong>첫 번째 술잔</strong>을 올리는 절차. <strong>보태평</strong> 11곡 연주.</div>
       </div>
       <div class="story-card">
         <div class="step-badge-sm">④ 네 번째 절차</div>
-        <div><span class="ans" style="font-size:13pt;">아헌(亞獻)</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">아헌(亞獻)</span></div>
         <div class="scene-body-sm"><strong>두 번째 술잔</strong>을 올리는 절차. <strong>정대업</strong> 연주 시작.</div>
       </div>
       <div class="story-card">
         <div class="step-badge-sm">⑤ 다섯 번째 절차</div>
-        <div><span class="ans" style="font-size:13pt;">종헌(終獻)</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">종헌(終獻)</span></div>
         <div class="scene-body-sm"><strong>세 번째 술잔</strong>을 올리는 절차. <strong>정대업</strong> 계속 연주.</div>
       </div>
       <div class="story-card">
         <div class="step-badge-sm">⑥ 마지막 절차</div>
-        <div><span class="ans" style="font-size:13pt;">송신(送神)</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">송신(送神)</span></div>
         <div class="scene-body-sm">신을 <strong>보내드리는</strong> 절차. <strong>헌가</strong>에서 마무리 음악.</div>
       </div>
     </div>
@@ -638,37 +645,37 @@ body{
     <div class="instr-grid">
       <div class="instr-card">
         <span class="instr-badge-sm">등가 전용 · 찰현악기</span>
-        <div><span class="ans" style="font-size:13pt;">아쟁</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">아쟁</span></div>
         <div class="instr-desc-sm"><strong>말총 활로 켜는</strong> 7현 현악기. 낮고 깊은 음색.</div>
         <div class="bogi-chips"><span class="chip">아쟁</span><span class="chip">절고</span><span class="chip">해금</span></div>
       </div>
       <div class="instr-card">
         <span class="instr-badge-sm">등가 전용 · 타악기</span>
-        <div><span class="ans" style="font-size:13pt;">절고</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">절고</span></div>
         <div class="instr-desc-sm">등가에서 <strong>박자를 조절</strong>하는 작은 북.</div>
         <div class="bogi-chips"><span class="chip">절고</span><span class="chip">진고</span><span class="chip">장구</span></div>
       </div>
       <div class="instr-card">
         <span class="instr-badge-sm">헌가 전용 · 관악기</span>
-        <div><span class="ans" style="font-size:13pt;">당피리</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">당피리</span></div>
         <div class="instr-desc-sm">끝이 퍼진 <strong>더블 리드</strong> 관악기. 헌가의 웅장함.</div>
         <div class="bogi-chips"><span class="chip">태평소</span><span class="chip">당피리</span><span class="chip">대금</span></div>
       </div>
       <div class="instr-card">
         <span class="instr-badge-sm">헌가 전용 · 타악기</span>
-        <div><span class="ans" style="font-size:13pt;">진고</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">진고</span></div>
         <div class="instr-desc-sm">헌가에서 쓰는 <strong>큰 북</strong>. 장중한 소리.</div>
         <div class="bogi-chips"><span class="chip">진고</span><span class="chip">절고</span><span class="chip">장구</span></div>
       </div>
       <div class="instr-card">
         <span class="instr-badge-sm">공통 · 금속 타악기</span>
-        <div><span class="ans" style="font-size:13pt;">편종</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">편종</span></div>
         <div class="instr-desc-sm"><strong>16개 청동 종</strong>을 매달아 두드리는 선율 타악기.</div>
         <div class="bogi-chips"><span class="chip">편종</span><span class="chip">편경</span><span class="chip">방향</span></div>
       </div>
       <div class="instr-card">
         <span class="instr-badge-sm">공통 · 찰현악기</span>
-        <div><span class="ans" style="font-size:13pt;">해금</span></div>
+        <div><span class="ans-plain" style="font-size:13pt;">해금</span></div>
         <div class="instr-desc-sm"><strong>두 줄</strong>을 말총 활로 켜는 현악기.</div>
         <div class="bogi-chips"><span class="chip">해금</span><span class="chip">아쟁</span><span class="chip">가야금</span></div>
       </div>
