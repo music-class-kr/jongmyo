@@ -1270,6 +1270,7 @@ function toggleBlank(el){
 function paintChalkText(root){
   let i = 0;
   root.querySelectorAll('.blank-term').forEach(el=>{
+    if(el.closest('.tl-text')){ el.dataset.chalk = '#F5DFA3'; return; }
     el.dataset.chalk = CHALK_COLORS[i % CHALK_COLORS.length]; i++;
   });
   root.querySelectorAll('strong').forEach(el=>{
