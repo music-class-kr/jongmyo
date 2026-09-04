@@ -16,32 +16,52 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;height:100%;overflow:hidden;
   font-family:'Noto Sans KR',sans-serif;
-  background:var(--dark);color:var(--cream);user-select:none;}
+  background:var(--dark);color:var(--cream);user-select:none;
+  display:flex;align-items:center;justify-content:center;}
+
+/* ── 고정 해상도 스테이지(화면에 맞게 자동 축소/확대) ── */
+#stage{
+  width:1280px;height:760px;flex-shrink:0;
+  position:relative;transform-origin:center center;
+}
+
+/* ── 상단 바로가기 바 ── */
+#quicknav{position:absolute;top:0;left:0;right:0;height:40px;
+  display:flex;align-items:center;gap:4px;padding:0 14px;
+  background:linear-gradient(90deg,#1a1208,#2d1f0a);
+  border-bottom:2px solid var(--gold);z-index:150;overflow-x:auto;}
+.qn-btn{flex:1;min-width:0;padding:6px 4px;border-radius:14px;
+  border:1.5px solid rgba(201,168,76,.35);background:transparent;
+  color:#c8b890;font-family:'Noto Sans KR',sans-serif;
+  font-size:.66rem;font-weight:600;cursor:pointer;transition:all .2s;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
+.qn-btn:hover{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold);}
+.qn-btn.active{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:800;}
 
 /* ── 슬라이더 ── */
-#slider-wrap{position:fixed;inset:0;overflow:hidden;}
-#slider{display:flex;height:100vh;
+#slider-wrap{position:absolute;top:40px;left:0;right:0;bottom:0;overflow:hidden;}
+#slider{display:flex;width:100%;height:100%;
   transition:transform .6s cubic-bezier(.77,0,.175,1);}
-.slide{flex-shrink:0;width:100vw;height:100vh;
+.slide{flex-shrink:0;width:100%;height:100%;
   position:relative;overflow:hidden;}
 
 /* ── 화살표 ── */
-.nav-arrow{position:fixed;top:50%;transform:translateY(-50%);
-  z-index:99999;width:52px;height:52px;border-radius:50%;
+.nav-arrow{position:absolute;top:50%;transform:translateY(-50%);
+  z-index:9999;width:44px;height:44px;border-radius:50%;
   background:rgba(13,10,6,.85);border:2px solid var(--gold);
-  color:var(--gold);font-size:1.5rem;cursor:pointer;
+  color:var(--gold);font-size:1.3rem;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   transition:all .2s;backdrop-filter:blur(6px);}
 .nav-arrow:hover{background:var(--gold);color:var(--dark);}
 .nav-arrow.disabled{opacity:.15;pointer-events:none;}
-#arrow-left{left:14px;}
-#arrow-right{right:14px;}
+#arrow-left{left:12px;}
+#arrow-right{right:12px;}
 
 /* ── 슬라이드 카운터 ── */
-#slide-counter{position:fixed;bottom:16px;left:50%;
-  transform:translateX(-50%);z-index:99999;
+#slide-counter{position:absolute;bottom:14px;left:50%;
+  transform:translateX(-50%);z-index:9999;
   display:flex;gap:6px;align-items:center;}
-.dot{width:9px;height:9px;border-radius:50%;
+.dot{width:8px;height:8px;border-radius:50%;
   background:rgba(201,168,76,.25);border:1.5px solid var(--gold);
   cursor:pointer;transition:all .25s;}
 .dot.on{background:var(--gold);transform:scale(1.35);}
@@ -56,15 +76,15 @@ html,body{width:100%;height:100%;overflow:hidden;
 .cover-content{position:relative;z-index:1;
   display:flex;flex-direction:column;
   align-items:center;gap:20px;padding:40px;text-align:center;}
-.cover-img{width:min(520px,62vw);height:min(320px,40vh);
+.cover-img{width:520px;height:320px;
   object-fit:cover;border-radius:12px;
   border:3px solid var(--gold);
   box-shadow:0 12px 50px rgba(0,0,0,.7);}
 .cover-title{font-family:'Noto Serif KR',serif;
-  font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;
+  font-size:3.5rem;font-weight:900;
   color:var(--gold);letter-spacing:.15em;
   text-shadow:0 2px 20px rgba(201,168,76,.5);}
-.cover-sub{font-size:clamp(1rem,1.8vw,1.3rem);
+.cover-sub{font-size:1.3rem;
   color:#c8b890;letter-spacing:.1em;}
 .cover-badge{padding:7px 26px;border:2px solid var(--gold);
   border-radius:30px;font-size:.9rem;color:var(--gold);
@@ -78,7 +98,7 @@ html,body{width:100%;height:100%;overflow:hidden;
   padding:16px 32px;display:flex;align-items:center;gap:14px;
   z-index:10;}
 .slide-header h2{font-family:'Noto Serif KR',serif;
-  font-size:clamp(1.3rem,2.5vw,1.8rem);
+  font-size:1.8rem;
   font-weight:900;color:var(--gold);}
 .slide-header .snum{margin-left:auto;
   font-size:.8rem;color:var(--muted);}
@@ -124,10 +144,10 @@ html,body{width:100%;height:100%;overflow:hidden;
   border:1.5px solid var(--gold);
   color:var(--gold);align-self:flex-start;}
 .info-title{font-family:'Noto Serif KR',serif;
-  font-size:clamp(1.5rem,3vw,2.2rem);
+  font-size:2.2rem;
   font-weight:900;color:var(--gold);}
 .info-hanja{font-size:1rem;color:var(--muted);margin-top:-12px;}
-.info-desc{font-size:clamp(.95rem,1.4vw,1.1rem);
+.info-desc{font-size:1.1rem;
   line-height:2.1;color:#e8e0d0;}
 .info-desc strong{color:var(--gold2);font-weight:700;}
 .info-desc em{color:#a8d8f0;font-style:normal;font-weight:600;}
@@ -229,14 +249,14 @@ html,body{width:100%;height:100%;overflow:hidden;
 .gallery-card .gc-hint{font-size:.65rem;color:#6a5a3a;}
 
 /* ══ 팝업 모달 ══ */
-#modal-overlay{position:fixed;inset:0;
+#modal-overlay{position:absolute;inset:0;
   background:rgba(0,0,0,.75);z-index:2000;
   display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;transition:opacity .3s;}
 #modal-overlay.show{opacity:1;pointer-events:all;}
 #modal-box{background:linear-gradient(135deg,#1a1208,#2d1f0a);
   border:2px solid var(--gold);border-radius:16px;
-  width:min(700px,90vw);max-height:85vh;
+  width:min(700px,90%);max-height:85%;
   display:flex;flex-direction:column;
   transform:scale(.85) translateY(30px);
   transition:transform .35s cubic-bezier(.34,1.56,.64,1);overflow:hidden;}
@@ -513,8 +533,8 @@ html,body{width:100%;height:100%;overflow:hidden;
 /* ══ 슬라이드 10: 악기 배치도 ══ */
 #s10 {
   background: #000;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   flex-shrink: 0;
   display: flex !important;
   align-items: center;
@@ -532,6 +552,29 @@ html,body{width:100%;height:100%;overflow:hidden;
 </style>
 </head>
 <body>
+
+<!-- 고스트 & 토스트 (실제 화면 좌표 기준이라 스테이지 밖에 둠) -->
+<div id="ghost">
+  <img id="ghost-img" src="" alt=""/>
+  <span id="ghost-name"></span>
+</div>
+<div id="toast"></div>
+
+<div id="stage">
+
+<!-- 상단 바로가기 -->
+<div id="quicknav">
+  <button class="qn-btn" onclick="goTo(0)">표지</button>
+  <button class="qn-btn" onclick="goTo(1)">목차</button>
+  <button class="qn-btn" onclick="goTo(2)">정의</button>
+  <button class="qn-btn" onclick="goTo(3)">공간·장소</button>
+  <button class="qn-btn" onclick="goTo(4)">역사</button>
+  <button class="qn-btn" onclick="goTo(5)">제례 절차</button>
+  <button class="qn-btn" onclick="goTo(6)">보태평·정대업</button>
+  <button class="qn-btn" onclick="goTo(7)">악기 갤러리</button>
+  <button class="qn-btn" onclick="goTo(8)">배치 활동</button>
+  <button class="qn-btn" onclick="goTo(9)">배치도</button>
+</div>
 
 <!-- 내비게이션 화살표 -->
 <button class="nav-arrow" id="arrow-left" onclick="goPrev()">&#8592;</button>
@@ -559,13 +602,6 @@ html,body{width:100%;height:100%;overflow:hidden;
     </div>
   </div>
 </div>
-
-<!-- 고스트 & 토스트 -->
-<div id="ghost">
-  <img id="ghost-img" src="" alt=""/>
-  <span id="ghost-name"></span>
-</div>
-<div id="toast"></div>
 
 <div id="slider-wrap">
 <div id="slider">
@@ -1109,13 +1145,27 @@ html,body{width:100%;height:100%;overflow:hidden;
 
 <!-- ════════ 슬라이드 10 — 악기 배치도 ════════ -->
 <div class="slide" id="s10" style="background:#000;display:flex;align-items:center;justify-content:center;">
-  <img src="종묘제례악_배치도.png" style="max-width:100%;max-height:100vh;object-fit:contain;">
+  <img src="종묘제례악_배치도.png" style="max-width:100%;max-height:100%;object-fit:contain;">
 </div>
 
 </div><!-- /#slider -->
 </div><!-- /#slider-wrap -->
 
+</div><!-- /#stage -->
+
 <script>
+/* ═══════════════════════════════════════
+   화면 크기에 맞게 스테이지 자동 축소/확대
+═══════════════════════════════════════ */
+const STAGE_W = 1280, STAGE_H = 760;
+function fitStage(){
+  const scale = Math.min(window.innerWidth/STAGE_W, window.innerHeight/STAGE_H);
+  document.getElementById('stage').style.transform = `scale(${scale})`;
+}
+window.addEventListener('resize', fitStage);
+window.addEventListener('orientationchange', fitStage);
+fitStage();
+
 /* ═══════════════════════════════════════
    슬라이더
 ═══════════════════════════════════════ */
@@ -1137,9 +1187,12 @@ function buildDots(){
 function goTo(n){
   if(n<0||n>=TOTAL_SLIDES) return;
   currentSlide = n;
-  document.getElementById('slider').style.transform=`translateX(-${n*100}vw)`;
+  document.getElementById('slider').style.transform=`translateX(-${n*100}%)`;
   document.querySelectorAll('.dot').forEach((d,i)=>{
     d.className='dot'+(i===n?' on':'');
+  });
+  document.querySelectorAll('.qn-btn').forEach((b,i)=>{
+    b.classList.toggle('active', i===n);
   });
   document.getElementById('arrow-left').className='nav-arrow'+(n===0?' disabled':'');
   document.getElementById('arrow-right').className='nav-arrow'+(n===TOTAL_SLIDES-1?' disabled':'');
