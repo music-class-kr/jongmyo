@@ -21,31 +21,12 @@ html,body{width:100%;height:100%;overflow:hidden;
 
 /* ── 고정 해상도 스테이지(화면에 맞게 자동 축소/확대) ── */
 #stage{
-  width:1280px;height:760px;flex-shrink:0;
+  width:1280px;height:720px;flex-shrink:0;
   position:relative;transform-origin:center center;
 }
 
-/* ── 상단 바로가기 바 ── */
-#quicknav{position:absolute;top:0;left:0;right:0;height:40px;
-  display:flex;align-items:center;gap:4px;padding:0 14px;
-  background:linear-gradient(90deg,#1B2E26,#14241D);
-  border-bottom:2px solid var(--gold);z-index:150;overflow-x:auto;}
-.qn-btn{flex:1;min-width:0;padding:6px 4px;border-radius:14px;
-  border:1.5px solid var(--qc,var(--gold));background:transparent;
-  color:var(--qc,#E8C888);font-family:'Noto Sans KR',sans-serif;
-  font-size:0.78rem;font-weight:600;cursor:pointer;transition:all .2s;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
-.qn-btn:nth-child(6n+1){--qc:#F0D28A;}
-.qn-btn:nth-child(6n+2){--qc:#F2A9B5;}
-.qn-btn:nth-child(6n+3){--qc:#9ECBEA;}
-.qn-btn:nth-child(6n+4){--qc:#A8E0C4;}
-.qn-btn:nth-child(6n+5){--qc:#C7AEEA;}
-.qn-btn:nth-child(6n+6){--qc:#F2B584;}
-.qn-btn:hover{background:var(--qc);color:#20302A;}
-.qn-btn.active{background:var(--qc);color:#20302A;font-weight:800;}
-
 /* ── 슬라이더 ── */
-#slider-wrap{position:absolute;top:40px;left:0;right:0;bottom:0;overflow:hidden;}
+#slider-wrap{position:absolute;inset:0;overflow:hidden;}
 #slider{display:flex;width:100%;height:100%;
   transition:transform .6s cubic-bezier(.77,0,.175,1);}
 .slide{flex-shrink:0;width:100%;height:100%;
@@ -578,20 +559,6 @@ html,body{width:100%;height:100%;overflow:hidden;
 <div id="toast"></div>
 
 <div id="stage">
-
-<!-- 상단 바로가기 -->
-<div id="quicknav">
-  <button class="qn-btn" onclick="goTo(0)">표지</button>
-  <button class="qn-btn" onclick="goTo(1)">목차</button>
-  <button class="qn-btn" onclick="goTo(2)">정의</button>
-  <button class="qn-btn" onclick="goTo(3)">공간·장소</button>
-  <button class="qn-btn" onclick="goTo(4)">역사</button>
-  <button class="qn-btn" onclick="goTo(5)">제례 절차</button>
-  <button class="qn-btn" onclick="goTo(6)">보태평·정대업</button>
-  <button class="qn-btn" onclick="goTo(7)">악기 갤러리</button>
-  <button class="qn-btn" onclick="goTo(8)">배치 활동</button>
-  <button class="qn-btn" onclick="goTo(9)">배치도</button>
-</div>
 
 <!-- 내비게이션 화살표 -->
 <button class="nav-arrow" id="arrow-left" onclick="goPrev()">&#8592;</button>
@@ -1158,7 +1125,7 @@ html,body{width:100%;height:100%;overflow:hidden;
 /* ═══════════════════════════════════════
    화면 크기에 맞게 스테이지 자동 축소/확대
 ═══════════════════════════════════════ */
-const STAGE_W = 1280, STAGE_H = 760;
+const STAGE_W = 1280, STAGE_H = 720;
 function fitStage(){
   const scale = Math.min(window.innerWidth/STAGE_W, window.innerHeight/STAGE_H);
   document.getElementById('stage').style.transform = `scale(${scale})`;
@@ -1191,9 +1158,6 @@ function goTo(n){
   document.getElementById('slider').style.transform=`translateX(-${n*100}%)`;
   document.querySelectorAll('.dot').forEach((d,i)=>{
     d.className='dot'+(i===n?' on':'');
-  });
-  document.querySelectorAll('.qn-btn').forEach((b,i)=>{
-    b.classList.toggle('active', i===n);
   });
   document.getElementById('arrow-left').className='nav-arrow'+(n===0?' disabled':'');
   document.getElementById('arrow-right').className='nav-arrow'+(n===TOTAL_SLIDES-1?' disabled':'');
