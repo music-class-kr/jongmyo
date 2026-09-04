@@ -1353,7 +1353,7 @@ function attemptPlace(dz, piece){
     correctCount++;
     updateScore();
     if(selectedPiece===piece){ selectedPiece=null; }
-    showToast(`✅ 정답! ${given}`,'#4F9A63');
+    showToast('✅ 정답입니다!','#4F9A63');
   } else {
     dz.classList.add('wrong');
     setTimeout(()=>dz.classList.remove('wrong'),500);
